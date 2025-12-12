@@ -1,7 +1,7 @@
 ﻿Imports System.Drawing.Drawing2D
 
 
-Public Class frmDashbaord
+Public Class frmDashboard
 
 
     Private Sub frmDashbaord_Load(sender As Object, e As EventArgs) Handles MyBase.Load

@@ -1,6 +1,6 @@
 ﻿Public Class frmReservation
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        Dim dash As New frmDashbaord
+        Dim dash As New frmDashboard
         SlideInForm(dash)
         Me.Hide()
     End Sub
