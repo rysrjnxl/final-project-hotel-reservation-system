@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Module DatabaseModule
-    Public connString As String = "Server=localhost;Database=hotel_db;Uid=root;Pwd=admin1234;"
+    Public connString As String = "server=localhost;user=root;password=admin123;database=hotel_db"
     Public conn As New MySqlConnection(connString)
 
     Public Function TestConnection() As Boolean

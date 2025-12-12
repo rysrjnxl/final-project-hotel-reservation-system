@@ -50,7 +50,7 @@ Partial Class LoginForm
         ' 
         ' txtbxPassword
         ' 
-        txtbxPassword.Location = New Point(289, 490)
+        txtbxPassword.Location = New Point(293, 487)
         txtbxPassword.Name = "txtbxPassword"
         txtbxPassword.Size = New Size(215, 31)
         txtbxPassword.TabIndex = 2
@@ -93,6 +93,7 @@ Partial Class LoginForm
         Controls.Add(Label2)
         Controls.Add(Label1)
         Name = "LoginForm"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "LoginForm"
         ResumeLayout(False)
         PerformLayout()
