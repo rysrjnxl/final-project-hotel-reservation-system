@@ -22,6 +22,12 @@
             Dim sql As String = "SELECT * FROM users WHERE username='" & user & "' AND password='" & pass & "'"
             Dim dt As DataTable = GetData(sql)
 
+            ' SAFETY CHECK: If dt is Nothing, the connection failed. Don't continue.
+            If dt Is Nothing Then
+                MsgBox("Connection failed. Please check if MySQL is running and your password is correct.", MsgBoxStyle.Critical, "Database Error")
+                Exit Sub
+            End If
+
             If dt.Rows.Count > 0 Then
                 ' Login Success
                 MsgBox("Welcome, " & user & "!", MsgBoxStyle.Information, "Login Successful")

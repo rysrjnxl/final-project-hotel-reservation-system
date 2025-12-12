@@ -1,25 +1,64 @@
 ﻿Imports System.Drawing.Drawing2D
 
-
 Public Class frmDashboard
 
-
+    ' This runs automatically when the Dashboard opens
     Private Sub frmDashbaord_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadDashboardStats()
     End Sub
 
     Private Sub LoadDashboardStats()
-        'Temporary values until database is connected
-        lblAvailableRooms.Text = "15"
-        lblTotalGuests.Text = "42"
-        lblStaffOnDuty.Text = "6"
-        lblTodayRes.Text = "3"
+        Try
+            ' 1. Get Count of Available Rooms
+            ' We check the 'rooms' table where status is 'Available'
+            Dim dtRooms As DataTable = GetData("SELECT COUNT(*) FROM rooms WHERE status='Available'")
+            If dtRooms IsNot Nothing AndAlso dtRooms.Rows.Count > 0 Then
+                lblAvailableRooms.Text = dtRooms.Rows(0)(0).ToString()
+            Else
+                lblAvailableRooms.Text = "0"
+            End If
 
+            ' 2. Get Total Count of Guests
+            Dim dtGuests As DataTable = GetData("SELECT COUNT(*) FROM guests")
+            If dtGuests IsNot Nothing AndAlso dtGuests.Rows.Count > 0 Then
+                lblTotalGuests.Text = dtGuests.Rows(0)(0).ToString()
+            Else
+                lblTotalGuests.Text = "0"
+            End If
+
+            ' 3. Get Count of Staff
+            Dim dtStaff As DataTable = GetData("SELECT COUNT(*) FROM staff")
+            If dtStaff IsNot Nothing AndAlso dtStaff.Rows.Count > 0 Then
+                lblStaffOnDuty.Text = dtStaff.Rows(0)(0).ToString()
+            Else
+                lblStaffOnDuty.Text = "0"
+            End If
+
+            ' 4. Get Today's Reservations
+            ' We check reservations where the check_in date matches today's date (CURDATE)
+            Dim dtRes As DataTable = GetData("SELECT COUNT(*) FROM reservations WHERE check_in = CURDATE()")
+            If dtRes IsNot Nothing AndAlso dtRes.Rows.Count > 0 Then
+                lblTodayRes.Text = dtRes.Rows(0)(0).ToString()
+            Else
+                lblTodayRes.Text = "0"
+            End If
+
+        Catch ex As Exception
+            ' If the database connection fails, just show dashes
+            lblAvailableRooms.Text = "-"
+            lblTotalGuests.Text = "-"
+            lblStaffOnDuty.Text = "-"
+            lblTodayRes.Text = "-"
+        End Try
+
+        ' Apply the rounded corner styling to the panels
         RoundPanel(pnlAvailable)
         RoundPanel(pnlTodayRes)
         RoundPanel(pnlTotalGuests)
         RoundPanel(pnlStaff)
     End Sub
+
+    ' --- Navigation Buttons ---
 
     Private Sub btnGuest_Click(sender As Object, e As EventArgs) Handles btnGuest.Click
         Dim f As New frmGuestManagement
@@ -51,7 +90,7 @@ Public Class frmDashboard
         Me.Hide()
     End Sub
 
-
+    ' --- Visual Styling Function ---
     Public Sub RoundPanel(p As Panel)
         Dim radius As Integer = 20
         Dim path As New GraphicsPath()
@@ -63,4 +102,5 @@ Public Class frmDashboard
         path.CloseFigure()
         p.Region = New Region(path)
     End Sub
+
 End Class
