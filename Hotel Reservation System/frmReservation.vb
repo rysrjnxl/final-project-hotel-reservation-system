@@ -61,11 +61,13 @@
             Dim sql As String = "INSERT INTO reservations(guest_id, room_id, check_in, check_out, total_amount) VALUES(" & guestId & ", " & roomId & ", '" & dtCheckIn.Value.ToString("yyyy-MM-dd") & "', '" & dtCheckOut.Value.ToString("yyyy-MM-dd") & "', " & total & ")"
             ExecuteQuery(sql)
 
-            ExecuteQuery("UPDATE rooms SET status='Occupied' WHERE id=" & roomId)
+            If dtCheckIn.Value.Date = DateTime.Now.Date Then
+                ExecuteQuery("UPDATE rooms SET status='Occupied' WHERE id=" & roomId)
+            End If
 
             MsgBox("Reservation Successful! Total: " & total.ToString("C"))
             LoadReservations()
-            LoadCombos()
+
         Catch ex As Exception
             MsgBox("Error saving reservation: " & ex.Message)
         End Try
