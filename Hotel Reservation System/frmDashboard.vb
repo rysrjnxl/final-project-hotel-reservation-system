@@ -108,4 +108,9 @@ Public Class frmDashboard
         p.Region = New Region(path)
     End Sub
 
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        LoginForm.Show()
+        Me.Hide()
+    End Sub
+
 End Class

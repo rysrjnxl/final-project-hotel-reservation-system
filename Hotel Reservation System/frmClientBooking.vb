@@ -104,4 +104,8 @@
         dash.Show()
         Me.Hide()
     End Sub
+
+    Private Sub cmbRoomType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRoomType.SelectedIndexChanged
+
+    End Sub
 End Class

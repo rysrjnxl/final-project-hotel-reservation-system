@@ -1,60 +1,73 @@
 ﻿Public Class LoginForm
-    ' Event that runs when the form opens
+
+    ' 1. Form Load: Setup UI
     Private Sub LoginForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Mask the password characters so they appear as dots
         txtbxPassword.PasswordChar = "*"
     End Sub
 
-    ' Event that runs when the Login button is clicked
+    ' 2. Login Logic
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim user As String = txtbxUsername.Text
         Dim pass As String = txtbxPassword.Text
 
-        ' 1. Basic Validation
+        ' Basic Validation
         If user = "" Or pass = "" Then
             MsgBox("Please enter both username and password.", MsgBoxStyle.Exclamation, "Login Error")
             Return
         End If
 
-        ' 2. Check Database Logic
         Try
-            ' We use the GetData function from your DatabaseModule
-            Dim sql As String = "SELECT * FROM users WHERE username='" & user & "' AND password='" & pass & "'"
-            Dim dt As DataTable = GetData(sql)
+            ' --- PHASE 1: CHECK ADMIN/STAFF TABLE ---
+            Dim sqlUser As String = "SELECT * FROM users WHERE username='" & user & "' AND password='" & pass & "'"
+            Dim dtUser As DataTable = GetData(sqlUser)
 
-            ' SAFETY CHECK: If dt is Nothing, the connection failed. Don't continue.
-            If dt Is Nothing Then
-                MsgBox("Connection failed. Please check if MySQL is running and your password is correct.", MsgBoxStyle.Critical, "Database Error")
-                Exit Sub
-            End If
+            If dtUser IsNot Nothing AndAlso dtUser.Rows.Count > 0 Then
+                ' Found in USERS table -> Go to ADMIN Dashboard
+                Dim role As String = dtUser.Rows(0)("role").ToString()
+                MsgBox("Welcome, " & role & "!", MsgBoxStyle.Information, "Login Successful")
 
-            If dt.Rows.Count > 0 Then
-                ' Login Success
-                MsgBox("Welcome, " & user & "!", MsgBoxStyle.Information, "Login Successful")
-
-                ' Open the Dashboard
                 Dim dash As New frmDashboard
                 dash.Show()
-
-                ' Hide this Login form
                 Me.Hide()
-            Else
-                ' Login Failed
-                MsgBox("Invalid Username or Password.", MsgBoxStyle.Critical, "Login Failed")
+                Exit Sub ' Stop here!
             End If
+
+            ' --- PHASE 2: CHECK GUEST TABLE ---
+            ' Note: Guests now use 'username' column, NOT 'full_name'
+            Dim sqlGuest As String = "SELECT * FROM guests WHERE username='" & user & "' AND password='" & pass & "'"
+            Dim dtGuest As DataTable = GetData(sqlGuest)
+
+            If dtGuest IsNot Nothing AndAlso dtGuest.Rows.Count > 0 Then
+                ' Found in GUESTS table -> Go to CLIENT Dashboard
+
+                ' Store Guest ID for this session (Important for history!)
+                Dim CurrentGuestID = Convert.ToInt32(dtGuest.Rows(0)("id"))
+
+                MsgBox("Welcome back, " & user & "!", MsgBoxStyle.Information, "Login Successful")
+
+                Dim clientDash As New frmClientBooking
+                clientDash.Show()
+                Me.Hide()
+                Exit Sub ' Stop here!
+            End If
+
+            ' --- IF NOT FOUND IN EITHER ---
+            MsgBox("Invalid Username or Password.", MsgBoxStyle.Critical, "Login Failed")
 
         Catch ex As Exception
             MsgBox("Error connecting to database: " & ex.Message)
         End Try
     End Sub
 
-    Private Sub Passwordtxtbx_KeyDown(sender As Object, e As KeyEventArgs) Handles txtbxPassword.KeyDown
+    ' 3. Allow pressing "Enter" key to login
+    Private Sub txtbxPassword_KeyDown(sender As Object, e As KeyEventArgs) Handles txtbxPassword.KeyDown
         If e.KeyCode = Keys.Enter Then
             btnLogin.PerformClick()
         End If
     End Sub
 
-    Private Sub linkSignUp_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkSignUp.LinkClicked
+    ' 4. Sign Up Button (Opens Registration)
+    Private Sub btnSignUp_Click(sender As Object, e As EventArgs) Handles linkSignUp.Click
         Dim reg As New frmGuestRegistration
         reg.Show()
         Me.Hide()
