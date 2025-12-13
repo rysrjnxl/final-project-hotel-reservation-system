@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frmGuestManagement
+Partial Class frmUserManagement
     Inherits System.Windows.Forms.Form
 
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -20,88 +20,83 @@ Partial Class frmGuestManagement
         Label1 = New Label()
         Label2 = New Label()
         Label3 = New Label()
-        txtName = New TextBox()
-        txtEmail = New TextBox()
-        txtPhone = New TextBox()
+        txtUsername = New TextBox()
+        txtPassword = New TextBox()
+        cmbRole = New ComboBox()
         btnAdd = New Button()
         btnUpdate = New Button()
         btnDelete = New Button()
-        dgvGuest = New DataGridView()
+        dgvUsers = New DataGridView()
         btnBack = New Button()
-        CType(dgvGuest, ComponentModel.ISupportInitialize).BeginInit()
+        CType(dgvUsers, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
-        Label1.Location = New Point(62, 88)
-        Label1.Margin = New Padding(4, 0, 4, 0)
+        Label1.Location = New Point(50, 70)
         Label1.Name = "Label1"
-        Label1.Size = New Size(77, 30)
+        Label1.Size = New Size(94, 23)
         Label1.TabIndex = 0
-        Label1.Text = "Name:"
+        Label1.Text = "Username:"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
-        Label2.Location = New Point(62, 144)
-        Label2.Margin = New Padding(4, 0, 4, 0)
+        Label2.Location = New Point(50, 115)
         Label2.Name = "Label2"
-        Label2.Size = New Size(72, 30)
+        Label2.Size = New Size(90, 23)
         Label2.TabIndex = 1
-        Label2.Text = "Email:"
+        Label2.Text = "Password:"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
-        Label3.Location = New Point(62, 200)
-        Label3.Margin = New Padding(4, 0, 4, 0)
+        Label3.Location = New Point(50, 160)
         Label3.Name = "Label3"
-        Label3.Size = New Size(82, 30)
+        Label3.Size = New Size(50, 23)
         Label3.TabIndex = 2
-        Label3.Text = "Phone:"
+        Label3.Text = "Role:"
         ' 
-        ' txtName
+        ' txtUsername
         ' 
-        txtName.Font = New Font("Segoe UI", 10.0F)
-        txtName.Location = New Point(162, 84)
-        txtName.Margin = New Padding(4, 4, 4, 4)
-        txtName.Name = "txtName"
-        txtName.Size = New Size(312, 34)
-        txtName.TabIndex = 3
+        txtUsername.Font = New Font("Segoe UI", 10.0F)
+        txtUsername.Location = New Point(150, 67)
+        txtUsername.Name = "txtUsername"
+        txtUsername.Size = New Size(240, 30)
+        txtUsername.TabIndex = 3
         ' 
-        ' txtEmail
+        ' txtPassword
         ' 
-        txtEmail.Font = New Font("Segoe UI", 10.0F)
-        txtEmail.Location = New Point(162, 140)
-        txtEmail.Margin = New Padding(4, 4, 4, 4)
-        txtEmail.Name = "txtEmail"
-        txtEmail.Size = New Size(312, 34)
-        txtEmail.TabIndex = 4
+        txtPassword.Font = New Font("Segoe UI", 10.0F)
+        txtPassword.Location = New Point(150, 112)
+        txtPassword.Name = "txtPassword"
+        txtPassword.Size = New Size(240, 30)
+        txtPassword.TabIndex = 4
         ' 
-        ' txtPhone
+        ' cmbRole
         ' 
-        txtPhone.Font = New Font("Segoe UI", 10.0F)
-        txtPhone.Location = New Point(162, 196)
-        txtPhone.Margin = New Padding(4, 4, 4, 4)
-        txtPhone.Name = "txtPhone"
-        txtPhone.Size = New Size(312, 34)
-        txtPhone.TabIndex = 5
+        cmbRole.Font = New Font("Segoe UI", 10.0F)
+        cmbRole.FormattingEnabled = True
+        cmbRole.Items.AddRange(New Object() {"Manager", "Staff", "Administrator"})
+        cmbRole.Location = New Point(150, 157)
+        cmbRole.Name = "cmbRole"
+        cmbRole.Size = New Size(240, 31)
+        cmbRole.TabIndex = 5
         ' 
         ' btnAdd
         ' 
         btnAdd.BackColor = Color.FromArgb(CByte(46), CByte(204), CByte(113))
-        btnAdd.FlatAppearance.BorderSize = 0
         btnAdd.FlatStyle = FlatStyle.Flat
+        btnAdd.FlatAppearance.BorderSize = 0
         btnAdd.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         btnAdd.ForeColor = Color.White
-        btnAdd.Location = New Point(62, 275)
-        btnAdd.Margin = New Padding(4, 4, 4, 4)
+        btnAdd.Location = New Point(50, 220)
         btnAdd.Name = "btnAdd"
-        btnAdd.Size = New Size(125, 50)
+        btnAdd.Size = New Size(100, 40)
         btnAdd.TabIndex = 6
         btnAdd.Text = "Add"
         btnAdd.UseVisualStyleBackColor = False
@@ -109,14 +104,13 @@ Partial Class frmGuestManagement
         ' btnUpdate
         ' 
         btnUpdate.BackColor = Color.FromArgb(CByte(243), CByte(156), CByte(18))
-        btnUpdate.FlatAppearance.BorderSize = 0
         btnUpdate.FlatStyle = FlatStyle.Flat
+        btnUpdate.FlatAppearance.BorderSize = 0
         btnUpdate.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         btnUpdate.ForeColor = Color.White
-        btnUpdate.Location = New Point(200, 275)
-        btnUpdate.Margin = New Padding(4, 4, 4, 4)
+        btnUpdate.Location = New Point(160, 220)
         btnUpdate.Name = "btnUpdate"
-        btnUpdate.Size = New Size(125, 50)
+        btnUpdate.Size = New Size(100, 40)
         btnUpdate.TabIndex = 7
         btnUpdate.Text = "Update"
         btnUpdate.UseVisualStyleBackColor = False
@@ -124,67 +118,63 @@ Partial Class frmGuestManagement
         ' btnDelete
         ' 
         btnDelete.BackColor = Color.FromArgb(CByte(231), CByte(76), CByte(60))
-        btnDelete.FlatAppearance.BorderSize = 0
         btnDelete.FlatStyle = FlatStyle.Flat
+        btnDelete.FlatAppearance.BorderSize = 0
         btnDelete.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         btnDelete.ForeColor = Color.White
-        btnDelete.Location = New Point(338, 275)
-        btnDelete.Margin = New Padding(4, 4, 4, 4)
+        btnDelete.Location = New Point(270, 220)
         btnDelete.Name = "btnDelete"
-        btnDelete.Size = New Size(125, 50)
+        btnDelete.Size = New Size(100, 40)
         btnDelete.TabIndex = 8
         btnDelete.Text = "Delete"
         btnDelete.UseVisualStyleBackColor = False
         ' 
-        ' dgvGuest
+        ' dgvUsers
         ' 
-        dgvGuest.BackgroundColor = Color.White
-        dgvGuest.BorderStyle = BorderStyle.None
-        dgvGuest.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvGuest.Location = New Point(62, 350)
-        dgvGuest.Margin = New Padding(4, 4, 4, 4)
-        dgvGuest.Name = "dgvGuest"
-        dgvGuest.RowHeadersWidth = 51
-        dgvGuest.Size = New Size(875, 250)
-        dgvGuest.TabIndex = 9
+        dgvUsers.BackgroundColor = Color.White
+        dgvUsers.BorderStyle = BorderStyle.None
+        dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvUsers.Location = New Point(50, 280)
+        dgvUsers.Name = "dgvUsers"
+        dgvUsers.RowHeadersWidth = 51
+        dgvUsers.Size = New Size(700, 200)
+        dgvUsers.TabIndex = 9
         ' 
         ' btnBack
         ' 
         btnBack.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
-        btnBack.FlatAppearance.BorderSize = 0
         btnBack.FlatStyle = FlatStyle.Flat
+        btnBack.FlatAppearance.BorderSize = 0
         btnBack.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
         btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(15, 15)
-        btnBack.Margin = New Padding(4, 4, 4, 4)
+        btnBack.Location = New Point(12, 12)
         btnBack.Name = "btnBack"
-        btnBack.Size = New Size(125, 44)
+        btnBack.Size = New Size(100, 35)
         btnBack.TabIndex = 11
         btnBack.Text = "← Back"
         btnBack.UseVisualStyleBackColor = False
         ' 
-        ' frmGuestManagement
+        ' frmUserManagement
         ' 
-        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(236), CByte(240), CByte(241))
-        ClientSize = New Size(1000, 625)
+        ClientSize = New Size(800, 500)
         Controls.Add(btnBack)
-        Controls.Add(dgvGuest)
+        Controls.Add(dgvUsers)
         Controls.Add(btnDelete)
         Controls.Add(btnUpdate)
         Controls.Add(btnAdd)
-        Controls.Add(txtPhone)
-        Controls.Add(txtEmail)
-        Controls.Add(txtName)
+        Controls.Add(cmbRole)
+        Controls.Add(txtPassword)
+        Controls.Add(txtUsername)
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Label1)
-        Margin = New Padding(4, 4, 4, 4)
-        Name = "frmGuestManagement"
+        Name = "frmUserManagement"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Guest Management"
-        CType(dgvGuest, ComponentModel.ISupportInitialize).EndInit()
+        Text = "User Management"
+        CType(dgvUsers, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -192,12 +182,12 @@ Partial Class frmGuestManagement
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents txtName As TextBox
-    Friend WithEvents txtEmail As TextBox
-    Friend WithEvents txtPhone As TextBox
+    Friend WithEvents txtUsername As TextBox
+    Friend WithEvents txtPassword As TextBox
+    Friend WithEvents cmbRole As ComboBox
     Friend WithEvents btnAdd As Button
     Friend WithEvents btnUpdate As Button
     Friend WithEvents btnDelete As Button
-    Friend WithEvents dgvGuest As DataGridView
+    Friend WithEvents dgvUsers As DataGridView
     Friend WithEvents btnBack As Button
 End Class

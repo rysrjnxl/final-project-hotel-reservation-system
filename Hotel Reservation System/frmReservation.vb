@@ -1,5 +1,12 @@
 ﻿Public Class frmReservation
     Private Sub frmReservation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dgvReservation.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgvReservation.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        dgvReservation.ReadOnly = True
+        dgvReservation.AllowUserToAddRows = False
+        dgvReservation.RowHeadersVisible = False
+        dgvReservation.AllowUserToResizeColumns = False
+        dgvReservation.AllowUserToResizeRows = False
         LoadCombos()
         LoadReservations()
     End Sub
@@ -29,7 +36,7 @@
                             "FROM reservations r " &
                             "JOIN guests g ON r.guest_id = g.id " &
                             "JOIN rooms rm ON r.room_id = rm.id"
-        DataGridView1.DataSource = GetData(sql)
+        dgvReservation.DataSource = GetData(sql)
     End Sub
 
     Private Sub btnAddRes_Click(sender As Object, e As EventArgs) Handles btnAddRes.Click

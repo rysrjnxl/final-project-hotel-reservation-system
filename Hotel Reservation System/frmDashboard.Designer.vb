@@ -35,6 +35,7 @@ Partial Class frmDashboard
         btnReservation = New Button()
         btnStaff = New Button()
         btnCleaning = New Button()
+        btnUsers = New Button()
         pnlAvailable.SuspendLayout()
         pnlStaff.SuspendLayout()
         pnlTotalGuests.SuspendLayout()
@@ -200,7 +201,7 @@ Partial Class frmDashboard
         btnGuest.FlatStyle = FlatStyle.Flat
         btnGuest.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnGuest.ForeColor = Color.White
-        btnGuest.Location = New Point(1, 260)
+        btnGuest.Location = New Point(1, 147)
         btnGuest.Margin = New Padding(4)
         btnGuest.Name = "btnGuest"
         btnGuest.Padding = New Padding(25, 0, 0, 0)
@@ -217,7 +218,7 @@ Partial Class frmDashboard
         btnRoom.FlatStyle = FlatStyle.Flat
         btnRoom.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnRoom.ForeColor = Color.White
-        btnRoom.Location = New Point(1, 328)
+        btnRoom.Location = New Point(1, 297)
         btnRoom.Margin = New Padding(4)
         btnRoom.Name = "btnRoom"
         btnRoom.Padding = New Padding(25, 0, 0, 0)
@@ -234,7 +235,7 @@ Partial Class frmDashboard
         btnReservation.FlatStyle = FlatStyle.Flat
         btnReservation.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnReservation.ForeColor = Color.White
-        btnReservation.Location = New Point(1, 190)
+        btnReservation.Location = New Point(1, 222)
         btnReservation.Margin = New Padding(4)
         btnReservation.Name = "btnReservation"
         btnReservation.Padding = New Padding(25, 0, 0, 0)
@@ -251,7 +252,7 @@ Partial Class frmDashboard
         btnStaff.FlatStyle = FlatStyle.Flat
         btnStaff.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnStaff.ForeColor = Color.White
-        btnStaff.Location = New Point(1, 401)
+        btnStaff.Location = New Point(1, 370)
         btnStaff.Margin = New Padding(4)
         btnStaff.Name = "btnStaff"
         btnStaff.Padding = New Padding(25, 0, 0, 0)
@@ -268,7 +269,7 @@ Partial Class frmDashboard
         btnCleaning.FlatStyle = FlatStyle.Flat
         btnCleaning.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnCleaning.ForeColor = Color.White
-        btnCleaning.Location = New Point(1, 469)
+        btnCleaning.Location = New Point(1, 438)
         btnCleaning.Margin = New Padding(4)
         btnCleaning.Name = "btnCleaning"
         btnCleaning.Padding = New Padding(25, 0, 0, 0)
@@ -278,12 +279,30 @@ Partial Class frmDashboard
         btnCleaning.TextAlign = ContentAlignment.MiddleLeft
         btnCleaning.UseVisualStyleBackColor = False
         ' 
+        ' btnUsers
+        ' 
+        btnUsers.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
+        btnUsers.FlatAppearance.BorderSize = 0
+        btnUsers.FlatStyle = FlatStyle.Flat
+        btnUsers.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnUsers.ForeColor = Color.White
+        btnUsers.Location = New Point(1, 510)
+        btnUsers.Margin = New Padding(4)
+        btnUsers.Name = "btnUsers"
+        btnUsers.Padding = New Padding(25, 0, 0, 0)
+        btnUsers.Size = New Size(312, 75)
+        btnUsers.TabIndex = 10
+        btnUsers.Text = "Manage Users"
+        btnUsers.TextAlign = ContentAlignment.MiddleLeft
+        btnUsers.UseVisualStyleBackColor = False
+        ' 
         ' frmDashboard
         ' 
         AutoScaleDimensions = New SizeF(10.0F, 25.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(236), CByte(240), CByte(241))
         ClientSize = New Size(1253, 670)
+        Controls.Add(btnUsers)
         Controls.Add(btnCleaning)
         Controls.Add(pnlTodayRes)
         Controls.Add(btnStaff)
@@ -330,4 +349,5 @@ Partial Class frmDashboard
     Friend WithEvents btnReservation As Button
     Friend WithEvents btnStaff As Button
     Friend WithEvents btnCleaning As Button
+    Friend WithEvents btnUsers As Button
 End Class

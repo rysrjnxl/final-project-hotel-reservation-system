@@ -4,6 +4,13 @@ Public Class frmRoomManagement
     Dim selectedId As String = ""
 
     Private Sub frmRoomManagement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dgvRoomManagement.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgvRoomManagement.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        dgvRoomManagement.ReadOnly = True
+        dgvRoomManagement.AllowUserToAddRows = False
+        dgvRoomManagement.RowHeadersVisible = False
+        dgvRoomManagement.AllowUserToResizeColumns = False
+        dgvRoomManagement.AllowUserToResizeRows = False
         LoadRooms()
         ' Populate Room Types
         cmbRoomType.Items.Add("Single")
@@ -12,7 +19,7 @@ Public Class frmRoomManagement
     End Sub
 
     Sub LoadRooms()
-        DataGridView1.DataSource = GetData("SELECT * FROM rooms")
+        dgvRoomManagement.DataSource = GetData("SELECT * FROM rooms")
     End Sub
 
     Private Sub btnAddRoom_Click(sender As Object, e As EventArgs) Handles btnAddRoom.Click
@@ -34,9 +41,9 @@ Public Class frmRoomManagement
         LoadRooms()
     End Sub
 
-    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRoomManagement.CellClick
         If e.RowIndex >= 0 Then
-            Dim row As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+            Dim row As DataGridViewRow = dgvRoomManagement.Rows(e.RowIndex)
             selectedId = row.Cells("id").Value.ToString()
             txtRoomNumber.Text = row.Cells("room_number").Value.ToString()
             cmbRoomType.Text = row.Cells("room_type").Value.ToString()

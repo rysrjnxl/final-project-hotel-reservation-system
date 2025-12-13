@@ -87,10 +87,15 @@ Public Class frmDashboard
     Private Sub btnCleaning_Click(sender As Object, e As EventArgs) Handles btnCleaning.Click
         Dim f As New frmCleaningSchedule
         f.Show()
+        Hide()
+    End Sub
+
+    Private Sub btnUsers_Click(sender As Object, e As EventArgs) Handles btnUsers.Click
+        Dim f As New frmUserManagement
+        f.Show()
         Me.Hide()
     End Sub
 
-    ' --- Visual Styling Function ---
     Public Sub RoundPanel(p As Panel)
         Dim radius As Integer = 20
         Dim path As New GraphicsPath()

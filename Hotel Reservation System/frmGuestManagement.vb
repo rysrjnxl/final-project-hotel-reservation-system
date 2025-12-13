@@ -2,6 +2,13 @@
     Dim selectedId As String = ""
 
     Private Sub frmGuestManagement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dgvGuest.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgvGuest.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        dgvGuest.ReadOnly = True
+        dgvGuest.AllowUserToAddRows = False
+        dgvGuest.RowHeadersVisible = False
+        dgvGuest.AllowUserToResizeColumns = False
+        dgvGuest.AllowUserToResizeRows = False
         LoadGuests()
     End Sub
 
@@ -39,7 +46,7 @@
         End If
     End Sub
 
-    Private Sub dgvGuest_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvGuest.CellClick
+    Private Sub dgvStaff_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvGuest.CellClick
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow = dgvGuest.Rows(e.RowIndex)
             selectedId = row.Cells("id").Value.ToString()

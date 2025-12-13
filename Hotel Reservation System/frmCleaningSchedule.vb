@@ -2,6 +2,13 @@
     Dim selectedId As String = ""
 
     Private Sub frmCleaningSchedule_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dgvCleaning.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgvCleaning.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        dgvCleaning.ReadOnly = True
+        dgvCleaning.AllowUserToAddRows = False
+        dgvCleaning.RowHeadersVisible = False
+        dgvCleaning.AllowUserToResizeColumns = False
+        dgvCleaning.AllowUserToResizeRows = False
         LoadCombos()
         LoadSchedule()
     End Sub

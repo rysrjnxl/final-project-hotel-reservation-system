@@ -2,12 +2,19 @@
     Dim selectedId As String = ""
 
     Private Sub frmStaffManagement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dgvStaff.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        dgvStaff.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        dgvStaff.ReadOnly = True
+        dgvStaff.AllowUserToAddRows = False
+        dgvStaff.RowHeadersVisible = False
+        dgvStaff.AllowUserToResizeColumns = False
+        dgvStaff.AllowUserToResizeRows = False
         LoadStaff()
         cmbPosition.Items.AddRange(New Object() {"Manager", "Receptionist", "Cleaner", "Security"})
     End Sub
 
     Sub LoadStaff()
-        DataGridView1.DataSource = GetData("SELECT * FROM staff")
+        dgvStaff.DataSource = GetData("SELECT * FROM staff")
     End Sub
 
     Private Sub btnAddStaff_Click(sender As Object, e As EventArgs) Handles btnAddStaff.Click
@@ -22,9 +29,9 @@
         LoadStaff()
     End Sub
 
-    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvStaff.CellClick
         If e.RowIndex >= 0 Then
-            Dim row As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+            Dim row As DataGridViewRow = dgvStaff.Rows(e.RowIndex)
             selectedId = row.Cells("id").Value.ToString()
             txtStaffName.Text = row.Cells("full_name").Value.ToString()
             cmbPosition.Text = row.Cells("position").Value.ToString()

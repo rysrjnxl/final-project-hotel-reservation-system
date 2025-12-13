@@ -26,18 +26,19 @@ Partial Class frmStaffManagement
         btnAddStaff = New Button()
         btnUpdateStaff = New Button()
         btnDeleteStaff = New Button()
-        DataGridView1 = New DataGridView()
+        dgvStaff = New DataGridView()
         btnBack = New Button()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(dgvStaff, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
-        Label1.Location = New Point(50, 70)
+        Label1.Location = New Point(62, 88)
+        Label1.Margin = New Padding(4, 0, 4, 0)
         Label1.Name = "Label1"
-        Label1.Size = New Size(62, 23)
+        Label1.Size = New Size(77, 30)
         Label1.TabIndex = 0
         Label1.Text = "Name:"
         ' 
@@ -45,9 +46,10 @@ Partial Class frmStaffManagement
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
-        Label2.Location = New Point(50, 115)
+        Label2.Location = New Point(62, 144)
+        Label2.Margin = New Padding(4, 0, 4, 0)
         Label2.Name = "Label2"
-        Label2.Size = New Size(78, 23)
+        Label2.Size = New Size(99, 30)
         Label2.TabIndex = 1
         Label2.Text = "Position:"
         ' 
@@ -55,47 +57,52 @@ Partial Class frmStaffManagement
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
-        Label3.Location = New Point(50, 160)
+        Label3.Location = New Point(62, 200)
+        Label3.Margin = New Padding(4, 0, 4, 0)
         Label3.Name = "Label3"
-        Label3.Size = New Size(64, 23)
+        Label3.Size = New Size(82, 30)
         Label3.TabIndex = 2
         Label3.Text = "Phone:"
         ' 
         ' txtStaffName
         ' 
         txtStaffName.Font = New Font("Segoe UI", 10.0F)
-        txtStaffName.Location = New Point(140, 67)
+        txtStaffName.Location = New Point(175, 84)
+        txtStaffName.Margin = New Padding(4, 4, 4, 4)
         txtStaffName.Name = "txtStaffName"
-        txtStaffName.Size = New Size(240, 30)
+        txtStaffName.Size = New Size(299, 34)
         txtStaffName.TabIndex = 3
         ' 
         ' txtStaffPhone
         ' 
         txtStaffPhone.Font = New Font("Segoe UI", 10.0F)
-        txtStaffPhone.Location = New Point(140, 157)
+        txtStaffPhone.Location = New Point(175, 196)
+        txtStaffPhone.Margin = New Padding(4, 4, 4, 4)
         txtStaffPhone.Name = "txtStaffPhone"
-        txtStaffPhone.Size = New Size(240, 30)
+        txtStaffPhone.Size = New Size(299, 34)
         txtStaffPhone.TabIndex = 4
         ' 
         ' cmbPosition
         ' 
         cmbPosition.Font = New Font("Segoe UI", 10.0F)
         cmbPosition.FormattingEnabled = True
-        cmbPosition.Location = New Point(140, 112)
+        cmbPosition.Location = New Point(175, 140)
+        cmbPosition.Margin = New Padding(4, 4, 4, 4)
         cmbPosition.Name = "cmbPosition"
-        cmbPosition.Size = New Size(240, 31)
+        cmbPosition.Size = New Size(299, 36)
         cmbPosition.TabIndex = 5
         ' 
         ' btnAddStaff
         ' 
         btnAddStaff.BackColor = Color.FromArgb(CByte(46), CByte(204), CByte(113))
-        btnAddStaff.FlatStyle = FlatStyle.Flat
         btnAddStaff.FlatAppearance.BorderSize = 0
+        btnAddStaff.FlatStyle = FlatStyle.Flat
         btnAddStaff.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         btnAddStaff.ForeColor = Color.White
-        btnAddStaff.Location = New Point(50, 220)
+        btnAddStaff.Location = New Point(62, 275)
+        btnAddStaff.Margin = New Padding(4, 4, 4, 4)
         btnAddStaff.Name = "btnAddStaff"
-        btnAddStaff.Size = New Size(100, 40)
+        btnAddStaff.Size = New Size(125, 50)
         btnAddStaff.TabIndex = 6
         btnAddStaff.Text = "Add"
         btnAddStaff.UseVisualStyleBackColor = False
@@ -103,13 +110,14 @@ Partial Class frmStaffManagement
         ' btnUpdateStaff
         ' 
         btnUpdateStaff.BackColor = Color.FromArgb(CByte(243), CByte(156), CByte(18))
-        btnUpdateStaff.FlatStyle = FlatStyle.Flat
         btnUpdateStaff.FlatAppearance.BorderSize = 0
+        btnUpdateStaff.FlatStyle = FlatStyle.Flat
         btnUpdateStaff.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         btnUpdateStaff.ForeColor = Color.White
-        btnUpdateStaff.Location = New Point(160, 220)
+        btnUpdateStaff.Location = New Point(200, 275)
+        btnUpdateStaff.Margin = New Padding(4, 4, 4, 4)
         btnUpdateStaff.Name = "btnUpdateStaff"
-        btnUpdateStaff.Size = New Size(100, 40)
+        btnUpdateStaff.Size = New Size(125, 50)
         btnUpdateStaff.TabIndex = 7
         btnUpdateStaff.Text = "Update"
         btnUpdateStaff.UseVisualStyleBackColor = False
@@ -117,50 +125,53 @@ Partial Class frmStaffManagement
         ' btnDeleteStaff
         ' 
         btnDeleteStaff.BackColor = Color.FromArgb(CByte(231), CByte(76), CByte(60))
-        btnDeleteStaff.FlatStyle = FlatStyle.Flat
         btnDeleteStaff.FlatAppearance.BorderSize = 0
+        btnDeleteStaff.FlatStyle = FlatStyle.Flat
         btnDeleteStaff.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         btnDeleteStaff.ForeColor = Color.White
-        btnDeleteStaff.Location = New Point(270, 220)
+        btnDeleteStaff.Location = New Point(338, 275)
+        btnDeleteStaff.Margin = New Padding(4, 4, 4, 4)
         btnDeleteStaff.Name = "btnDeleteStaff"
-        btnDeleteStaff.Size = New Size(100, 40)
+        btnDeleteStaff.Size = New Size(125, 50)
         btnDeleteStaff.TabIndex = 8
         btnDeleteStaff.Text = "Delete"
         btnDeleteStaff.UseVisualStyleBackColor = False
         ' 
-        ' DataGridView1
+        ' dgvStaff
         ' 
-        DataGridView1.BackgroundColor = Color.White
-        DataGridView1.BorderStyle = BorderStyle.None
-        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(50, 280)
-        DataGridView1.Name = "DataGridView1"
-        DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(700, 200)
-        DataGridView1.TabIndex = 9
+        dgvStaff.BackgroundColor = Color.White
+        dgvStaff.BorderStyle = BorderStyle.None
+        dgvStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvStaff.Location = New Point(62, 350)
+        dgvStaff.Margin = New Padding(4, 4, 4, 4)
+        dgvStaff.Name = "dgvStaff"
+        dgvStaff.RowHeadersWidth = 51
+        dgvStaff.Size = New Size(875, 250)
+        dgvStaff.TabIndex = 9
         ' 
         ' btnBack
         ' 
         btnBack.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
-        btnBack.FlatStyle = FlatStyle.Flat
         btnBack.FlatAppearance.BorderSize = 0
+        btnBack.FlatStyle = FlatStyle.Flat
         btnBack.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
         btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(12, 12)
+        btnBack.Location = New Point(15, 15)
+        btnBack.Margin = New Padding(4, 4, 4, 4)
         btnBack.Name = "btnBack"
-        btnBack.Size = New Size(100, 35)
+        btnBack.Size = New Size(125, 44)
         btnBack.TabIndex = 11
         btnBack.Text = "← Back"
         btnBack.UseVisualStyleBackColor = False
         ' 
         ' frmStaffManagement
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(236), CByte(240), CByte(241))
-        ClientSize = New Size(800, 500)
+        ClientSize = New Size(1000, 625)
         Controls.Add(btnBack)
-        Controls.Add(DataGridView1)
+        Controls.Add(dgvStaff)
         Controls.Add(btnDeleteStaff)
         Controls.Add(btnUpdateStaff)
         Controls.Add(btnAddStaff)
@@ -170,10 +181,11 @@ Partial Class frmStaffManagement
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Label1)
+        Margin = New Padding(4, 4, 4, 4)
         Name = "frmStaffManagement"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Staff Management"
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
+        CType(dgvStaff, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -187,6 +199,6 @@ Partial Class frmStaffManagement
     Friend WithEvents btnAddStaff As Button
     Friend WithEvents btnUpdateStaff As Button
     Friend WithEvents btnDeleteStaff As Button
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvStaff As DataGridView
     Friend WithEvents btnBack As Button
 End Class
