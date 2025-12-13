@@ -4,6 +4,8 @@ Module DatabaseModule
     Public connString As String = "server=localhost;user=root;password=admin123;database=hotel_db"
     Public conn As New MySqlConnection(connString)
 
+    Public CurrentGuestID As Integer = 0
+
     Public Function TestConnection() As Boolean
         Try
             If conn.State = ConnectionState.Closed Then conn.Open()

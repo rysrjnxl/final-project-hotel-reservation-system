@@ -33,6 +33,7 @@ Partial Class frmClientBooking
         btnBookNow = New Button()
         btnBack = New Button()
         lblTotal = New Label()
+        btnHistory = New Button()
         SuspendLayout()
         ' 
         ' Label1
@@ -51,7 +52,7 @@ Partial Class frmClientBooking
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
-        Label2.Location = New Point(100, 125)
+        Label2.Location = New Point(100, 145)
         Label2.Margin = New Padding(4, 0, 4, 0)
         Label2.Name = "Label2"
         Label2.Size = New Size(113, 28)
@@ -62,7 +63,7 @@ Partial Class frmClientBooking
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
-        Label3.Location = New Point(100, 188)
+        Label3.Location = New Point(100, 208)
         Label3.Margin = New Padding(4, 0, 4, 0)
         Label3.Name = "Label3"
         Label3.Size = New Size(76, 28)
@@ -73,7 +74,7 @@ Partial Class frmClientBooking
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
-        Label4.Location = New Point(100, 250)
+        Label4.Location = New Point(100, 270)
         Label4.Margin = New Padding(4, 0, 4, 0)
         Label4.Name = "Label4"
         Label4.Size = New Size(69, 28)
@@ -84,7 +85,7 @@ Partial Class frmClientBooking
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
-        Label5.Location = New Point(100, 312)
+        Label5.Location = New Point(100, 332)
         Label5.Margin = New Padding(4, 0, 4, 0)
         Label5.Name = "Label5"
         Label5.Size = New Size(123, 28)
@@ -95,7 +96,7 @@ Partial Class frmClientBooking
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
-        Label6.Location = New Point(625, 125)
+        Label6.Location = New Point(625, 145)
         Label6.Margin = New Padding(4, 0, 4, 0)
         Label6.Name = "Label6"
         Label6.Size = New Size(97, 28)
@@ -106,7 +107,7 @@ Partial Class frmClientBooking
         ' 
         Label7.AutoSize = True
         Label7.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
-        Label7.Location = New Point(625, 188)
+        Label7.Location = New Point(625, 208)
         Label7.Margin = New Padding(4, 0, 4, 0)
         Label7.Name = "Label7"
         Label7.Size = New Size(114, 28)
@@ -116,8 +117,8 @@ Partial Class frmClientBooking
         ' txtName
         ' 
         txtName.Font = New Font("Segoe UI", 10.0F)
-        txtName.Location = New Point(250, 121)
-        txtName.Margin = New Padding(4, 4, 4, 4)
+        txtName.Location = New Point(250, 141)
+        txtName.Margin = New Padding(4)
         txtName.Name = "txtName"
         txtName.Size = New Size(312, 34)
         txtName.TabIndex = 2
@@ -125,8 +126,8 @@ Partial Class frmClientBooking
         ' txtPhone
         ' 
         txtPhone.Font = New Font("Segoe UI", 10.0F)
-        txtPhone.Location = New Point(250, 184)
-        txtPhone.Margin = New Padding(4, 4, 4, 4)
+        txtPhone.Location = New Point(250, 204)
+        txtPhone.Margin = New Padding(4)
         txtPhone.Name = "txtPhone"
         txtPhone.Size = New Size(312, 34)
         txtPhone.TabIndex = 4
@@ -134,8 +135,8 @@ Partial Class frmClientBooking
         ' txtEmail
         ' 
         txtEmail.Font = New Font("Segoe UI", 10.0F)
-        txtEmail.Location = New Point(250, 246)
-        txtEmail.Margin = New Padding(4, 4, 4, 4)
+        txtEmail.Location = New Point(250, 266)
+        txtEmail.Margin = New Padding(4)
         txtEmail.Name = "txtEmail"
         txtEmail.Size = New Size(312, 34)
         txtEmail.TabIndex = 6
@@ -144,8 +145,8 @@ Partial Class frmClientBooking
         ' 
         cmbRoomType.Font = New Font("Segoe UI", 10.0F)
         cmbRoomType.FormattingEnabled = True
-        cmbRoomType.Location = New Point(250, 309)
-        cmbRoomType.Margin = New Padding(4, 4, 4, 4)
+        cmbRoomType.Location = New Point(250, 329)
+        cmbRoomType.Margin = New Padding(4)
         cmbRoomType.Name = "cmbRoomType"
         cmbRoomType.Size = New Size(312, 36)
         cmbRoomType.TabIndex = 8
@@ -153,8 +154,8 @@ Partial Class frmClientBooking
         ' dtCheckIn
         ' 
         dtCheckIn.Font = New Font("Segoe UI", 10.0F)
-        dtCheckIn.Location = New Point(750, 121)
-        dtCheckIn.Margin = New Padding(4, 4, 4, 4)
+        dtCheckIn.Location = New Point(750, 141)
+        dtCheckIn.Margin = New Padding(4)
         dtCheckIn.Name = "dtCheckIn"
         dtCheckIn.Size = New Size(249, 34)
         dtCheckIn.TabIndex = 10
@@ -162,8 +163,8 @@ Partial Class frmClientBooking
         ' dtCheckOut
         ' 
         dtCheckOut.Font = New Font("Segoe UI", 10.0F)
-        dtCheckOut.Location = New Point(750, 184)
-        dtCheckOut.Margin = New Padding(4, 4, 4, 4)
+        dtCheckOut.Location = New Point(750, 204)
+        dtCheckOut.Margin = New Padding(4)
         dtCheckOut.Name = "dtCheckOut"
         dtCheckOut.Size = New Size(249, 34)
         dtCheckOut.TabIndex = 12
@@ -175,8 +176,8 @@ Partial Class frmClientBooking
         btnBookNow.FlatStyle = FlatStyle.Flat
         btnBookNow.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
         btnBookNow.ForeColor = Color.White
-        btnBookNow.Location = New Point(250, 438)
-        btnBookNow.Margin = New Padding(4, 4, 4, 4)
+        btnBookNow.Location = New Point(250, 458)
+        btnBookNow.Margin = New Padding(4)
         btnBookNow.Name = "btnBookNow"
         btnBookNow.Size = New Size(500, 62)
         btnBookNow.TabIndex = 13
@@ -191,7 +192,7 @@ Partial Class frmClientBooking
         btnBack.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
         btnBack.ForeColor = Color.White
         btnBack.Location = New Point(15, 15)
-        btnBack.Margin = New Padding(4, 4, 4, 4)
+        btnBack.Margin = New Padding(4)
         btnBack.Name = "btnBack"
         btnBack.Size = New Size(125, 44)
         btnBack.TabIndex = 14
@@ -203,12 +204,27 @@ Partial Class frmClientBooking
         lblTotal.AutoSize = True
         lblTotal.Font = New Font("Segoe UI", 14.0F, FontStyle.Bold)
         lblTotal.ForeColor = Color.FromArgb(CByte(39), CByte(174), CByte(96))
-        lblTotal.Location = New Point(625, 309)
+        lblTotal.Location = New Point(625, 329)
         lblTotal.Margin = New Padding(4, 0, 4, 0)
         lblTotal.Name = "lblTotal"
         lblTotal.Size = New Size(223, 38)
         lblTotal.TabIndex = 15
         lblTotal.Text = "Est. Total: $0.00"
+        ' 
+        ' btnHistory
+        ' 
+        btnHistory.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
+        btnHistory.FlatAppearance.BorderSize = 0
+        btnHistory.FlatStyle = FlatStyle.Flat
+        btnHistory.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        btnHistory.ForeColor = Color.White
+        btnHistory.Location = New Point(924, 15)
+        btnHistory.Margin = New Padding(4)
+        btnHistory.Name = "btnHistory"
+        btnHistory.Size = New Size(125, 44)
+        btnHistory.TabIndex = 16
+        btnHistory.Text = "History"
+        btnHistory.UseVisualStyleBackColor = False
         ' 
         ' frmClientBooking
         ' 
@@ -216,6 +232,7 @@ Partial Class frmClientBooking
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(236), CByte(240), CByte(241))
         ClientSize = New Size(1062, 562)
+        Controls.Add(btnHistory)
         Controls.Add(lblTotal)
         Controls.Add(btnBack)
         Controls.Add(btnBookNow)
@@ -232,7 +249,7 @@ Partial Class frmClientBooking
         Controls.Add(txtName)
         Controls.Add(Label2)
         Controls.Add(Label1)
-        Margin = New Padding(4, 4, 4, 4)
+        Margin = New Padding(4)
         Name = "frmClientBooking"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Client Booking"
@@ -256,4 +273,5 @@ Partial Class frmClientBooking
     Friend WithEvents btnBookNow As Button
     Friend WithEvents btnBack As Button
     Friend WithEvents lblTotal As Label
+    Friend WithEvents btnHistory As Button
 End Class
