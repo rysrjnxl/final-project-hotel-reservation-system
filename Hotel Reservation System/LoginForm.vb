@@ -14,7 +14,6 @@
         End If
 
         Try
-            ' 1. Check Admin
             Dim sqlUser As String = "SELECT * FROM users WHERE username='" & user & "' AND password='" & pass & "'"
             Dim dtUser As DataTable = GetData(sqlUser)
 
@@ -27,17 +26,14 @@
                 Exit Sub
             End If
 
-            ' 2. Check Guest
             Dim sqlGuest As String = "SELECT * FROM guests WHERE username='" & user & "' AND password='" & pass & "'"
             Dim dtGuest As DataTable = GetData(sqlGuest)
 
             If dtGuest IsNot Nothing AndAlso dtGuest.Rows.Count > 0 Then
-                ' Set Global Session ID
                 CurrentGuestID = Convert.ToInt32(dtGuest.Rows(0)("id"))
 
                 MsgBox("Welcome back, " & user & "!", MsgBoxStyle.Information, "Login Successful")
 
-                ' Go to Booking
                 Dim clientBooking As New frmClientBooking
                 clientBooking.Show()
                 Me.Hide()

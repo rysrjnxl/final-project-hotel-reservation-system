@@ -12,22 +12,20 @@
     End Sub
 
     Sub LoadCombos()
-        ' Load Guests
         Dim dtGuests As DataTable = GetData("SELECT id, full_name FROM guests")
         If dtGuests IsNot Nothing Then
             cmbGuest.DataSource = dtGuests
             cmbGuest.DisplayMember = "full_name"
             cmbGuest.ValueMember = "id"
-            cmbGuest.SelectedIndex = -1 ' Start with nothing selected
+            cmbGuest.SelectedIndex = -1
         End If
 
-        ' Load Available Rooms
         Dim dtRooms As DataTable = GetData("SELECT id, room_number FROM rooms WHERE status='Available'")
         If dtRooms IsNot Nothing Then
             cmbRoom.DataSource = dtRooms
             cmbRoom.DisplayMember = "room_number"
             cmbRoom.ValueMember = "id"
-            cmbRoom.SelectedIndex = -1 ' Start with nothing selected
+            cmbRoom.SelectedIndex = -1
         End If
     End Sub
 
@@ -40,7 +38,6 @@
     End Sub
 
     Private Sub btnAddRes_Click(sender As Object, e As EventArgs) Handles btnAddRes.Click
-        ' 1. VALIDATION: Check if Guest and Room are selected
         If cmbGuest.SelectedValue Is Nothing OrElse cmbRoom.SelectedValue Is Nothing Then
             MsgBox("Please select a Guest and a Room first.", MsgBoxStyle.Exclamation, "Missing Info")
             Exit Sub
@@ -49,7 +46,6 @@
         Dim guestId As Integer = Convert.ToInt32(cmbGuest.SelectedValue)
         Dim roomId As Integer = Convert.ToInt32(cmbRoom.SelectedValue)
 
-        ' 2. Calculate Dates and Price
         Dim days As Integer = DateDiff(DateInterval.Day, dtCheckIn.Value, dtCheckOut.Value)
         If days < 1 Then days = 1
 
@@ -61,17 +57,15 @@
 
         Dim total As Decimal = price * days
 
-        ' 3. Save to Database
         Try
             Dim sql As String = "INSERT INTO reservations(guest_id, room_id, check_in, check_out, total_amount) VALUES(" & guestId & ", " & roomId & ", '" & dtCheckIn.Value.ToString("yyyy-MM-dd") & "', '" & dtCheckOut.Value.ToString("yyyy-MM-dd") & "', " & total & ")"
             ExecuteQuery(sql)
 
-            ' Mark Room as Occupied so it doesn't show up again
             ExecuteQuery("UPDATE rooms SET status='Occupied' WHERE id=" & roomId)
 
             MsgBox("Reservation Successful! Total: " & total.ToString("C"))
             LoadReservations()
-            LoadCombos() ' Refresh lists to hide the occupied room
+            LoadCombos()
         Catch ex As Exception
             MsgBox("Error saving reservation: " & ex.Message)
         End Try

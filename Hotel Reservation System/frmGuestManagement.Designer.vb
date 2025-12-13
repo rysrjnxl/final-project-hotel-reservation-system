@@ -20,171 +20,202 @@ Partial Class frmGuestManagement
         Label1 = New Label()
         Label2 = New Label()
         Label3 = New Label()
+        Label4 = New Label()
+        Label5 = New Label()
+        Label6 = New Label()
+
         txtName = New TextBox()
-        txtEmail = New TextBox()
         txtPhone = New TextBox()
-        btnAdd = New Button()
+        cmbRoom = New ComboBox()
+        dtCheckIn = New DateTimePicker()
+        dtCheckOut = New DateTimePicker()
+
         btnUpdate = New Button()
-        btnDelete = New Button()
-        dgvGuest = New DataGridView()
+        btnCheckOut = New Button()
         btnBack = New Button()
-        CType(dgvGuest, ComponentModel.ISupportInitialize).BeginInit()
+
+        dgvGuestStays = New DataGridView()
+
+        CType(dgvGuestStays, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' Label1
+        ' Label1 - Title
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
-        Label1.Location = New Point(62, 88)
-        Label1.Margin = New Padding(4, 0, 4, 0)
+        Label1.Font = New Font("Segoe UI", 16.0F, FontStyle.Bold)
+        Label1.ForeColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
+        Label1.Location = New Point(20, 20)
         Label1.Name = "Label1"
-        Label1.Size = New Size(77, 30)
+        Label1.Size = New Size(280, 37)
         Label1.TabIndex = 0
-        Label1.Text = "Name:"
+        Label1.Text = "Guest Stay Manager"
         ' 
-        ' Label2
+        ' Label2 - Name
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
-        Label2.Location = New Point(62, 144)
-        Label2.Margin = New Padding(4, 0, 4, 0)
+        Label2.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        Label2.Location = New Point(30, 80)
         Label2.Name = "Label2"
-        Label2.Size = New Size(72, 30)
-        Label2.TabIndex = 1
-        Label2.Text = "Email:"
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
-        Label3.Location = New Point(62, 200)
-        Label3.Margin = New Padding(4, 0, 4, 0)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(82, 30)
-        Label3.TabIndex = 2
-        Label3.Text = "Phone:"
+        Label2.Size = New Size(62, 23)
+        Label2.Text = "Guest:"
         ' 
         ' txtName
         ' 
         txtName.Font = New Font("Segoe UI", 10.0F)
-        txtName.Location = New Point(162, 84)
-        txtName.Margin = New Padding(4, 4, 4, 4)
+        txtName.Location = New Point(100, 77)
         txtName.Name = "txtName"
-        txtName.Size = New Size(312, 34)
-        txtName.TabIndex = 3
+        txtName.Size = New Size(200, 30)
+        txtName.TabIndex = 1
         ' 
-        ' txtEmail
+        ' Label3 - Phone
         ' 
-        txtEmail.Font = New Font("Segoe UI", 10.0F)
-        txtEmail.Location = New Point(162, 140)
-        txtEmail.Margin = New Padding(4, 4, 4, 4)
-        txtEmail.Name = "txtEmail"
-        txtEmail.Size = New Size(312, 34)
-        txtEmail.TabIndex = 4
+        Label3.AutoSize = True
+        Label3.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        Label3.Location = New Point(320, 80)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(64, 23)
+        Label3.Text = "Phone:"
         ' 
         ' txtPhone
         ' 
         txtPhone.Font = New Font("Segoe UI", 10.0F)
-        txtPhone.Location = New Point(162, 196)
-        txtPhone.Margin = New Padding(4, 4, 4, 4)
+        txtPhone.Location = New Point(390, 77)
         txtPhone.Name = "txtPhone"
-        txtPhone.Size = New Size(312, 34)
-        txtPhone.TabIndex = 5
+        txtPhone.Size = New Size(180, 30)
+        txtPhone.TabIndex = 2
         ' 
-        ' btnAdd
+        ' Label4 - Room
         ' 
-        btnAdd.BackColor = Color.FromArgb(CByte(46), CByte(204), CByte(113))
-        btnAdd.FlatAppearance.BorderSize = 0
-        btnAdd.FlatStyle = FlatStyle.Flat
-        btnAdd.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
-        btnAdd.ForeColor = Color.White
-        btnAdd.Location = New Point(62, 275)
-        btnAdd.Margin = New Padding(4, 4, 4, 4)
-        btnAdd.Name = "btnAdd"
-        btnAdd.Size = New Size(125, 50)
-        btnAdd.TabIndex = 6
-        btnAdd.Text = "Add"
-        btnAdd.UseVisualStyleBackColor = False
+        Label4.AutoSize = True
+        Label4.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        Label4.Location = New Point(600, 80)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(61, 23)
+        Label4.Text = "Room:"
+        ' 
+        ' cmbRoom
+        ' 
+        cmbRoom.Font = New Font("Segoe UI", 10.0F)
+        cmbRoom.FormattingEnabled = True
+        cmbRoom.Location = New Point(670, 77)
+        cmbRoom.Name = "cmbRoom"
+        cmbRoom.Size = New Size(120, 31)
+        cmbRoom.TabIndex = 3
+        ' 
+        ' Label5 - Check In
+        ' 
+        Label5.AutoSize = True
+        Label5.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        Label5.Location = New Point(30, 130)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(81, 23)
+        Label5.Text = "Check In:"
+        ' 
+        ' dtCheckIn
+        ' 
+        dtCheckIn.Font = New Font("Segoe UI", 10.0F)
+        dtCheckIn.Format = DateTimePickerFormat.Short
+        dtCheckIn.Location = New Point(120, 127)
+        dtCheckIn.Name = "dtCheckIn"
+        dtCheckIn.Size = New Size(150, 30)
+        dtCheckIn.TabIndex = 4
+        ' 
+        ' Label6 - Check Out
+        ' 
+        Label6.AutoSize = True
+        Label6.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        Label6.Location = New Point(300, 130)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(95, 23)
+        Label6.Text = "Check Out:"
+        ' 
+        ' dtCheckOut
+        ' 
+        dtCheckOut.Font = New Font("Segoe UI", 10.0F)
+        dtCheckOut.Format = DateTimePickerFormat.Short
+        dtCheckOut.Location = New Point(400, 127)
+        dtCheckOut.Name = "dtCheckOut"
+        dtCheckOut.Size = New Size(150, 30)
+        dtCheckOut.TabIndex = 5
         ' 
         ' btnUpdate
         ' 
         btnUpdate.BackColor = Color.FromArgb(CByte(243), CByte(156), CByte(18))
-        btnUpdate.FlatAppearance.BorderSize = 0
         btnUpdate.FlatStyle = FlatStyle.Flat
+        btnUpdate.FlatAppearance.BorderSize = 0
         btnUpdate.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
         btnUpdate.ForeColor = Color.White
-        btnUpdate.Location = New Point(200, 275)
-        btnUpdate.Margin = New Padding(4, 4, 4, 4)
+        btnUpdate.Location = New Point(580, 125)
         btnUpdate.Name = "btnUpdate"
-        btnUpdate.Size = New Size(125, 50)
-        btnUpdate.TabIndex = 7
+        btnUpdate.Size = New Size(100, 35)
+        btnUpdate.TabIndex = 6
         btnUpdate.Text = "Update"
         btnUpdate.UseVisualStyleBackColor = False
         ' 
-        ' btnDelete
+        ' btnCheckOut
         ' 
-        btnDelete.BackColor = Color.FromArgb(CByte(231), CByte(76), CByte(60))
-        btnDelete.FlatAppearance.BorderSize = 0
-        btnDelete.FlatStyle = FlatStyle.Flat
-        btnDelete.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
-        btnDelete.ForeColor = Color.White
-        btnDelete.Location = New Point(338, 275)
-        btnDelete.Margin = New Padding(4, 4, 4, 4)
-        btnDelete.Name = "btnDelete"
-        btnDelete.Size = New Size(125, 50)
-        btnDelete.TabIndex = 8
-        btnDelete.Text = "Delete"
-        btnDelete.UseVisualStyleBackColor = False
-        ' 
-        ' dgvGuest
-        ' 
-        dgvGuest.BackgroundColor = Color.White
-        dgvGuest.BorderStyle = BorderStyle.None
-        dgvGuest.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvGuest.Location = New Point(62, 350)
-        dgvGuest.Margin = New Padding(4, 4, 4, 4)
-        dgvGuest.Name = "dgvGuest"
-        dgvGuest.RowHeadersWidth = 51
-        dgvGuest.Size = New Size(875, 250)
-        dgvGuest.TabIndex = 9
+        btnCheckOut.BackColor = Color.FromArgb(CByte(231), CByte(76), CByte(60))
+        btnCheckOut.FlatStyle = FlatStyle.Flat
+        btnCheckOut.FlatAppearance.BorderSize = 0
+        btnCheckOut.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        btnCheckOut.ForeColor = Color.White
+        btnCheckOut.Location = New Point(690, 125)
+        btnCheckOut.Name = "btnCheckOut"
+        btnCheckOut.Size = New Size(100, 35)
+        btnCheckOut.TabIndex = 7
+        btnCheckOut.Text = "Check Out"
+        btnCheckOut.UseVisualStyleBackColor = False
         ' 
         ' btnBack
         ' 
         btnBack.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
-        btnBack.FlatAppearance.BorderSize = 0
         btnBack.FlatStyle = FlatStyle.Flat
+        btnBack.FlatAppearance.BorderSize = 0
         btnBack.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
         btnBack.ForeColor = Color.White
-        btnBack.Location = New Point(15, 15)
-        btnBack.Margin = New Padding(4, 4, 4, 4)
+        btnBack.Location = New Point(700, 20)
         btnBack.Name = "btnBack"
-        btnBack.Size = New Size(125, 44)
-        btnBack.TabIndex = 11
-        btnBack.Text = "← Back"
+        btnBack.Size = New Size(90, 35)
+        btnBack.TabIndex = 8
+        btnBack.Text = "Back"
         btnBack.UseVisualStyleBackColor = False
+        ' 
+        ' dgvGuestStays
+        ' 
+        dgvGuestStays.BackgroundColor = Color.White
+        dgvGuestStays.BorderStyle = BorderStyle.None
+        dgvGuestStays.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvGuestStays.Location = New Point(30, 180)
+        dgvGuestStays.Name = "dgvGuestStays"
+        dgvGuestStays.RowHeadersWidth = 51
+        dgvGuestStays.Size = New Size(760, 300)
+        dgvGuestStays.TabIndex = 9
         ' 
         ' frmGuestManagement
         ' 
-        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(236), CByte(240), CByte(241))
-        ClientSize = New Size(1000, 625)
+        ClientSize = New Size(820, 500)
+        Controls.Add(dgvGuestStays)
         Controls.Add(btnBack)
-        Controls.Add(dgvGuest)
-        Controls.Add(btnDelete)
+        Controls.Add(btnCheckOut)
         Controls.Add(btnUpdate)
-        Controls.Add(btnAdd)
+        Controls.Add(dtCheckOut)
+        Controls.Add(Label6)
+        Controls.Add(dtCheckIn)
+        Controls.Add(Label5)
+        Controls.Add(cmbRoom)
+        Controls.Add(Label4)
         Controls.Add(txtPhone)
-        Controls.Add(txtEmail)
-        Controls.Add(txtName)
         Controls.Add(Label3)
+        Controls.Add(txtName)
         Controls.Add(Label2)
         Controls.Add(Label1)
-        Margin = New Padding(4, 4, 4, 4)
         Name = "frmGuestManagement"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Guest Management"
-        CType(dgvGuest, ComponentModel.ISupportInitialize).EndInit()
+        CType(dgvGuestStays, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -192,12 +223,16 @@ Partial Class frmGuestManagement
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
     Friend WithEvents txtName As TextBox
-    Friend WithEvents txtEmail As TextBox
     Friend WithEvents txtPhone As TextBox
-    Friend WithEvents btnAdd As Button
+    Friend WithEvents cmbRoom As ComboBox
+    Friend WithEvents dtCheckIn As DateTimePicker
+    Friend WithEvents dtCheckOut As DateTimePicker
     Friend WithEvents btnUpdate As Button
-    Friend WithEvents btnDelete As Button
-    Friend WithEvents dgvGuest As DataGridView
+    Friend WithEvents btnCheckOut As Button
     Friend WithEvents btnBack As Button
+    Friend WithEvents dgvGuestStays As DataGridView
 End Class

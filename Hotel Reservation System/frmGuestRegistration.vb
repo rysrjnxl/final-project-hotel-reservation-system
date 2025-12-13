@@ -6,14 +6,12 @@
     End Sub
 
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
-        ' 1. Validate Input (Check if Username is empty)
         If txtUsername.Text = "" Or txtName.Text = "" Or txtEmail.Text = "" Or txtPhone.Text = "" Or txtPassword.Text = "" Then
             MsgBox("Please fill in all fields.", MsgBoxStyle.Exclamation)
             Exit Sub
         End If
 
         Try
-            ' 2. Check if Username already exists
             Dim checkSql As String = "SELECT * FROM guests WHERE username='" & txtUsername.Text & "'"
             Dim dt As DataTable = GetData(checkSql)
 
@@ -22,13 +20,11 @@
                 Exit Sub
             End If
 
-            ' 3. Create Account (Include Username)
             Dim sql As String = "INSERT INTO guests(username, full_name, email, phone, password) VALUES('" & txtUsername.Text & "', '" & txtName.Text & "', '" & txtEmail.Text & "', '" & txtPhone.Text & "', '" & txtPassword.Text & "')"
             ExecuteQuery(sql)
 
             MsgBox("Account Created Successfully! Please Login with your Username.", MsgBoxStyle.Information)
 
-            ' 4. Return to Login Screen
             Dim login As New LoginForm
             login.Show()
             Me.Close()

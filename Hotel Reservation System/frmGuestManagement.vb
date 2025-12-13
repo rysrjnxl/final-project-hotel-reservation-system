@@ -1,66 +1,119 @@
 ﻿Public Class frmGuestManagement
-    Dim selectedId As String = ""
+    Dim selectedResId As String = ""
+    Dim selectedRoomId As String = ""
 
     Private Sub frmGuestManagement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dgvGuest.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvGuest.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        dgvGuest.ReadOnly = True
-        dgvGuest.AllowUserToAddRows = False
-        dgvGuest.RowHeadersVisible = False
-        dgvGuest.AllowUserToResizeColumns = False
-        dgvGuest.AllowUserToResizeRows = False
-        LoadGuests()
+        ApplyTheme(Me)
+        LoadRooms()
+        LoadGuestStays()
     End Sub
 
-    Sub LoadGuests()
-        dgvGuest.DataSource = GetData("SELECT * FROM guests")
-    End Sub
+    Sub LoadGuestStays()
+        Dim sql As String = "SELECT r.id AS 'Res ID', g.full_name AS 'Guest Name', g.phone AS 'Phone', " &
+                            "rm.room_number AS 'Room', r.check_in AS 'Check In', r.check_out AS 'Check Out', rm.status AS 'Room Status', " &
+                            "r.room_id " &
+                            "FROM reservations r " &
+                            "JOIN guests g ON r.guest_id = g.id " &
+                            "JOIN rooms rm ON r.room_id = rm.id " &
+                            "ORDER BY r.check_in DESC"
 
-    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        If txtName.Text = "" Or txtPhone.Text = "" Then
-            MsgBox("Please fill in required fields.")
-            Exit Sub
+        Dim dt As DataTable = GetData(sql)
+        dgvGuestStays.DataSource = dt
+
+        If dgvGuestStays.Columns.Count > 0 Then
+            dgvGuestStays.Columns("Res ID").Visible = False
+            dgvGuestStays.Columns("room_id").Visible = False
         End If
-        Dim sql As String = "INSERT INTO guests(full_name, email, phone) VALUES('" & txtName.Text & "', '" & txtEmail.Text & "', '" & txtPhone.Text & "')"
-        ExecuteQuery(sql)
-        MsgBox("Guest Added!")
-        LoadGuests()
-        ClearFields()
+    End Sub
+
+    Sub LoadRooms()
+        Dim dt As DataTable = GetData("SELECT id, room_number FROM rooms")
+        cmbRoom.DataSource = dt
+        cmbRoom.DisplayMember = "room_number"
+        cmbRoom.ValueMember = "id"
+    End Sub
+
+    Private Sub dgvGuestStays_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvGuestStays.CellClick
+        If e.RowIndex >= 0 Then
+            Dim row As DataGridViewRow = dgvGuestStays.Rows(e.RowIndex)
+
+            If Not IsDBNull(row.Cells("Res ID").Value) Then
+                selectedResId = row.Cells("Res ID").Value.ToString()
+            Else
+                selectedResId = ""
+            End If
+
+            If Not IsDBNull(row.Cells("room_id").Value) AndAlso row.Cells("room_id").Value.ToString() <> "" Then
+                selectedRoomId = row.Cells("room_id").Value.ToString()
+
+                Try
+                    cmbRoom.SelectedValue = Convert.ToInt32(selectedRoomId)
+                Catch
+                    cmbRoom.SelectedIndex = -1
+                End Try
+            Else
+                selectedRoomId = ""
+                cmbRoom.SelectedIndex = -1
+            End If
+
+            txtName.Text = row.Cells("Guest Name").Value.ToString()
+            txtPhone.Text = row.Cells("Phone").Value.ToString()
+
+            Try
+                If Not IsDBNull(row.Cells("Check In").Value) Then
+                    dtCheckIn.Value = Convert.ToDateTime(row.Cells("Check In").Value)
+                End If
+
+                If Not IsDBNull(row.Cells("Check Out").Value) Then
+                    dtCheckOut.Value = Convert.ToDateTime(row.Cells("Check Out").Value)
+                End If
+            Catch ex As Exception
+                dtCheckIn.Value = DateTime.Now
+                dtCheckOut.Value = DateTime.Now.AddDays(1)
+            End Try
+        End If
     End Sub
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-        If selectedId = "" Then Return
-        Dim sql As String = "UPDATE guests SET full_name='" & txtName.Text & "', email='" & txtEmail.Text & "', phone='" & txtPhone.Text & "' WHERE id=" & selectedId
+        If selectedResId = "" Then
+            MsgBox("Please select a guest booking from the list.")
+            Return
+        End If
+
+        Dim newRoomId As String = cmbRoom.SelectedValue.ToString()
+        Dim inDate As String = dtCheckIn.Value.ToString("yyyy-MM-dd")
+        Dim outDate As String = dtCheckOut.Value.ToString("yyyy-MM-dd")
+
+        Dim sql As String = "UPDATE reservations SET room_id=" & newRoomId & ", check_in='" & inDate & "', check_out='" & outDate & "' WHERE id=" & selectedResId
         ExecuteQuery(sql)
-        MsgBox("Guest Updated!")
-        LoadGuests()
-        ClearFields()
-    End Sub
 
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        If selectedId = "" Then Return
-        If MsgBox("Are you sure?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-            ExecuteQuery("DELETE FROM guests WHERE id=" & selectedId)
-            LoadGuests()
-            ClearFields()
+        If newRoomId <> selectedRoomId Then
+            ExecuteQuery("UPDATE rooms SET status='Available' WHERE id=" & selectedRoomId)
+            ExecuteQuery("UPDATE rooms SET status='Occupied' WHERE id=" & newRoomId)
         End If
+
+        MsgBox("Booking Updated!")
+        LoadGuestStays()
     End Sub
 
-    Private Sub dgvStaff_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvGuest.CellClick
-        If e.RowIndex >= 0 Then
-            Dim row As DataGridViewRow = dgvGuest.Rows(e.RowIndex)
-            selectedId = row.Cells("id").Value.ToString()
-            txtName.Text = row.Cells("full_name").Value.ToString()
-            txtEmail.Text = row.Cells("email").Value.ToString()
-            txtPhone.Text = row.Cells("phone").Value.ToString()
+    Private Sub btnCheckOut_Click(sender As Object, e As EventArgs) Handles btnCheckOut.Click
+        If selectedRoomId = "" Then
+            MsgBox("Please select a guest to check out.")
+            Return
         End If
-    End Sub
 
-    Sub ClearFields()
-        txtName.Clear()
-        txtEmail.Clear()
-        txtPhone.Clear()
-        selectedId = ""
+        If MsgBox("Confirm Check Out for " & txtName.Text & "? Room will be marked Available.", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+            ExecuteQuery("UPDATE rooms SET status='Available' WHERE id=" & selectedRoomId)
+
+            MsgBox("Guest Checked Out Successfully.")
+            LoadGuestStays()
+
+            txtName.Clear()
+            txtPhone.Clear()
+            selectedResId = ""
+            selectedRoomId = ""
+        End If
     End Sub
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click

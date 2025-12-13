@@ -12,7 +12,6 @@ Public Class frmRoomManagement
         dgvRoomManagement.AllowUserToResizeColumns = False
         dgvRoomManagement.AllowUserToResizeRows = False
         LoadRooms()
-        ' Populate Room Types
         cmbRoomType.Items.Add("Single")
         cmbRoomType.Items.Add("Double")
         cmbRoomType.Items.Add("Suite")
