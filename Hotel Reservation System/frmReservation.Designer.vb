@@ -1,9 +1,8 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmReservation
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -14,13 +13,9 @@ Partial Class frmReservation
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Label1 = New Label()
         Label2 = New Label()
@@ -42,128 +37,160 @@ Partial Class frmReservation
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(98, 63)
+        Label1.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        Label1.Location = New Point(50, 70)
         Label1.Name = "Label1"
-        Label1.Size = New Size(46, 20)
+        Label1.Size = New Size(60, 23)
         Label1.TabIndex = 0
-        Label1.Text = "Guest"
+        Label1.Text = "Guest:"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(95, 97)
+        Label2.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        Label2.Location = New Point(50, 115)
         Label2.Name = "Label2"
-        Label2.Size = New Size(49, 20)
+        Label2.Size = New Size(61, 23)
         Label2.TabIndex = 1
-        Label2.Text = "Room"
+        Label2.Text = "Room:"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(80, 134)
+        Label3.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        Label3.Location = New Point(50, 160)
         Label3.Name = "Label3"
-        Label3.Size = New Size(64, 20)
+        Label3.Size = New Size(81, 23)
         Label3.TabIndex = 2
-        Label3.Text = "Check In"
+        Label3.Text = "Check In:"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(68, 178)
+        Label4.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        Label4.Location = New Point(380, 160)
         Label4.Name = "Label4"
-        Label4.Size = New Size(76, 20)
+        Label4.Size = New Size(95, 23)
         Label4.TabIndex = 3
-        Label4.Text = "Check Out"
+        Label4.Text = "Check Out:"
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(32, 223)
+        Label5.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+        Label5.Location = New Point(50, 260)
         Label5.Name = "Label5"
-        Label5.Size = New Size(112, 20)
+        Label5.Size = New Size(164, 28)
         Label5.TabIndex = 4
         Label5.Text = "Reservation List"
         ' 
         ' cmbGuest
         ' 
+        cmbGuest.Font = New Font("Segoe UI", 10.0F)
         cmbGuest.FormattingEnabled = True
-        cmbGuest.Location = New Point(161, 55)
+        cmbGuest.Location = New Point(140, 67)
         cmbGuest.Name = "cmbGuest"
-        cmbGuest.Size = New Size(151, 28)
+        cmbGuest.Size = New Size(200, 31)
         cmbGuest.TabIndex = 5
         ' 
         ' cmbRoom
         ' 
+        cmbRoom.Font = New Font("Segoe UI", 10.0F)
         cmbRoom.FormattingEnabled = True
-        cmbRoom.Location = New Point(161, 94)
+        cmbRoom.Location = New Point(140, 112)
         cmbRoom.Name = "cmbRoom"
-        cmbRoom.Size = New Size(151, 28)
+        cmbRoom.Size = New Size(200, 31)
         cmbRoom.TabIndex = 6
         ' 
         ' dtCheckIn
         ' 
-        dtCheckIn.Location = New Point(161, 134)
+        dtCheckIn.Font = New Font("Segoe UI", 10.0F)
+        dtCheckIn.Location = New Point(140, 157)
         dtCheckIn.Name = "dtCheckIn"
-        dtCheckIn.Size = New Size(250, 27)
+        dtCheckIn.Size = New Size(200, 30)
         dtCheckIn.TabIndex = 7
         ' 
         ' dtCheckOut
         ' 
-        dtCheckOut.Location = New Point(161, 178)
+        dtCheckOut.Font = New Font("Segoe UI", 10.0F)
+        dtCheckOut.Location = New Point(480, 157)
         dtCheckOut.Name = "dtCheckOut"
-        dtCheckOut.Size = New Size(250, 27)
+        dtCheckOut.Size = New Size(200, 30)
         dtCheckOut.TabIndex = 8
         ' 
         ' btnAddRes
         ' 
-        btnAddRes.Location = New Point(161, 219)
+        btnAddRes.BackColor = Color.FromArgb(CByte(46), CByte(204), CByte(113))
+        btnAddRes.FlatStyle = FlatStyle.Flat
+        btnAddRes.FlatAppearance.BorderSize = 0
+        btnAddRes.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        btnAddRes.ForeColor = Color.White
+        btnAddRes.Location = New Point(50, 210)
         btnAddRes.Name = "btnAddRes"
-        btnAddRes.Size = New Size(94, 29)
+        btnAddRes.Size = New Size(100, 40)
         btnAddRes.TabIndex = 9
-        btnAddRes.Text = "Add Reservation"
-        btnAddRes.UseVisualStyleBackColor = True
+        btnAddRes.Text = "Add"
+        btnAddRes.UseVisualStyleBackColor = False
         ' 
         ' btnUpdateRes
         ' 
-        btnUpdateRes.Location = New Point(261, 219)
+        btnUpdateRes.BackColor = Color.FromArgb(CByte(243), CByte(156), CByte(18))
+        btnUpdateRes.FlatStyle = FlatStyle.Flat
+        btnUpdateRes.FlatAppearance.BorderSize = 0
+        btnUpdateRes.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        btnUpdateRes.ForeColor = Color.White
+        btnUpdateRes.Location = New Point(160, 210)
         btnUpdateRes.Name = "btnUpdateRes"
-        btnUpdateRes.Size = New Size(94, 29)
+        btnUpdateRes.Size = New Size(100, 40)
         btnUpdateRes.TabIndex = 10
         btnUpdateRes.Text = "Update"
-        btnUpdateRes.UseVisualStyleBackColor = True
+        btnUpdateRes.UseVisualStyleBackColor = False
         ' 
         ' btnDeleteRes
         ' 
-        btnDeleteRes.Location = New Point(361, 219)
+        btnDeleteRes.BackColor = Color.FromArgb(CByte(231), CByte(76), CByte(60))
+        btnDeleteRes.FlatStyle = FlatStyle.Flat
+        btnDeleteRes.FlatAppearance.BorderSize = 0
+        btnDeleteRes.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        btnDeleteRes.ForeColor = Color.White
+        btnDeleteRes.Location = New Point(270, 210)
         btnDeleteRes.Name = "btnDeleteRes"
-        btnDeleteRes.Size = New Size(94, 29)
+        btnDeleteRes.Size = New Size(100, 40)
         btnDeleteRes.TabIndex = 11
         btnDeleteRes.Text = "Delete"
-        btnDeleteRes.UseVisualStyleBackColor = True
+        btnDeleteRes.UseVisualStyleBackColor = False
         ' 
         ' DataGridView1
         ' 
+        DataGridView1.BackgroundColor = Color.White
+        DataGridView1.BorderStyle = BorderStyle.None
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(32, 277)
+        DataGridView1.Location = New Point(50, 300)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(734, 165)
+        DataGridView1.Size = New Size(700, 180)
         DataGridView1.TabIndex = 12
         ' 
         ' btnBack
         ' 
+        btnBack.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
+        btnBack.FlatStyle = FlatStyle.Flat
+        btnBack.FlatAppearance.BorderSize = 0
+        btnBack.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        btnBack.ForeColor = Color.White
         btnBack.Location = New Point(12, 12)
         btnBack.Name = "btnBack"
-        btnBack.Size = New Size(146, 29)
+        btnBack.Size = New Size(100, 35)
         btnBack.TabIndex = 13
-        btnBack.Text = "Back to Dashboard"
-        btnBack.UseVisualStyleBackColor = True
+        btnBack.Text = "← Back"
+        btnBack.UseVisualStyleBackColor = False
         ' 
         ' frmReservation
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        BackColor = Color.FromArgb(CByte(236), CByte(240), CByte(241))
+        ClientSize = New Size(800, 500)
         Controls.Add(btnBack)
         Controls.Add(DataGridView1)
         Controls.Add(btnDeleteRes)
@@ -179,6 +206,7 @@ Partial Class frmReservation
         Controls.Add(Label2)
         Controls.Add(Label1)
         Name = "frmReservation"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Reservation"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

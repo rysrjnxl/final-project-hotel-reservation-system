@@ -1,9 +1,8 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmCleaningSchedule
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -14,13 +13,9 @@ Partial Class frmCleaningSchedule
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Label1 = New Label()
         Label2 = New Label()
@@ -39,105 +34,134 @@ Partial Class frmCleaningSchedule
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(119, 94)
+        Label1.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        Label1.Location = New Point(50, 70)
         Label1.Name = "Label1"
-        Label1.Size = New Size(49, 20)
+        Label1.Size = New Size(61, 23)
         Label1.TabIndex = 0
-        Label1.Text = "Room"
+        Label1.Text = "Room:"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(64, 135)
+        Label2.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        Label2.Location = New Point(50, 115)
         Label2.Name = "Label2"
-        Label2.Size = New Size(104, 20)
+        Label2.Size = New Size(128, 23)
         Label2.TabIndex = 1
-        Label2.Text = "Staff Assigned"
+        Label2.Text = "Staff Assigned:"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(119, 176)
+        Label3.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        Label3.Location = New Point(50, 160)
         Label3.Name = "Label3"
-        Label3.Size = New Size(49, 20)
+        Label3.Size = New Size(65, 23)
         Label3.TabIndex = 2
-        Label3.Text = "Status"
+        Label3.Text = "Status:"
         ' 
         ' cmbCleanRoom
         ' 
+        cmbCleanRoom.Font = New Font("Segoe UI", 10.0F)
         cmbCleanRoom.FormattingEnabled = True
-        cmbCleanRoom.Location = New Point(174, 91)
+        cmbCleanRoom.Location = New Point(180, 67)
         cmbCleanRoom.Name = "cmbCleanRoom"
-        cmbCleanRoom.Size = New Size(151, 28)
+        cmbCleanRoom.Size = New Size(200, 31)
         cmbCleanRoom.TabIndex = 3
         ' 
         ' cmbCleanStaff
         ' 
+        cmbCleanStaff.Font = New Font("Segoe UI", 10.0F)
         cmbCleanStaff.FormattingEnabled = True
-        cmbCleanStaff.Location = New Point(174, 132)
+        cmbCleanStaff.Location = New Point(180, 112)
         cmbCleanStaff.Name = "cmbCleanStaff"
-        cmbCleanStaff.Size = New Size(151, 28)
+        cmbCleanStaff.Size = New Size(200, 31)
         cmbCleanStaff.TabIndex = 4
         ' 
         ' cmbCleanStatus
         ' 
+        cmbCleanStatus.Font = New Font("Segoe UI", 10.0F)
         cmbCleanStatus.FormattingEnabled = True
         cmbCleanStatus.Items.AddRange(New Object() {"Pending", "In Progress", "Completed"})
-        cmbCleanStatus.Location = New Point(174, 173)
+        cmbCleanStatus.Location = New Point(180, 157)
         cmbCleanStatus.Name = "cmbCleanStatus"
-        cmbCleanStatus.Size = New Size(151, 28)
+        cmbCleanStatus.Size = New Size(200, 31)
         cmbCleanStatus.TabIndex = 5
         ' 
         ' btnAssignClean
         ' 
-        btnAssignClean.Location = New Point(64, 238)
+        btnAssignClean.BackColor = Color.FromArgb(CByte(46), CByte(204), CByte(113))
+        btnAssignClean.FlatStyle = FlatStyle.Flat
+        btnAssignClean.FlatAppearance.BorderSize = 0
+        btnAssignClean.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        btnAssignClean.ForeColor = Color.White
+        btnAssignClean.Location = New Point(50, 220)
         btnAssignClean.Name = "btnAssignClean"
-        btnAssignClean.Size = New Size(94, 29)
+        btnAssignClean.Size = New Size(100, 40)
         btnAssignClean.TabIndex = 6
         btnAssignClean.Text = "Assign"
-        btnAssignClean.UseVisualStyleBackColor = True
+        btnAssignClean.UseVisualStyleBackColor = False
         ' 
         ' btnUpdateClean
         ' 
-        btnUpdateClean.Location = New Point(164, 238)
+        btnUpdateClean.BackColor = Color.FromArgb(CByte(243), CByte(156), CByte(18))
+        btnUpdateClean.FlatStyle = FlatStyle.Flat
+        btnUpdateClean.FlatAppearance.BorderSize = 0
+        btnUpdateClean.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        btnUpdateClean.ForeColor = Color.White
+        btnUpdateClean.Location = New Point(160, 220)
         btnUpdateClean.Name = "btnUpdateClean"
-        btnUpdateClean.Size = New Size(94, 29)
+        btnUpdateClean.Size = New Size(100, 40)
         btnUpdateClean.TabIndex = 7
         btnUpdateClean.Text = "Update"
-        btnUpdateClean.UseVisualStyleBackColor = True
+        btnUpdateClean.UseVisualStyleBackColor = False
         ' 
         ' btnDeleteClean
         ' 
-        btnDeleteClean.Location = New Point(264, 238)
+        btnDeleteClean.BackColor = Color.FromArgb(CByte(231), CByte(76), CByte(60))
+        btnDeleteClean.FlatStyle = FlatStyle.Flat
+        btnDeleteClean.FlatAppearance.BorderSize = 0
+        btnDeleteClean.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        btnDeleteClean.ForeColor = Color.White
+        btnDeleteClean.Location = New Point(270, 220)
         btnDeleteClean.Name = "btnDeleteClean"
-        btnDeleteClean.Size = New Size(94, 29)
+        btnDeleteClean.Size = New Size(100, 40)
         btnDeleteClean.TabIndex = 8
         btnDeleteClean.Text = "Delete"
-        btnDeleteClean.UseVisualStyleBackColor = True
+        btnDeleteClean.UseVisualStyleBackColor = False
         ' 
         ' dgvCleaning
         ' 
+        dgvCleaning.BackgroundColor = Color.White
+        dgvCleaning.BorderStyle = BorderStyle.None
         dgvCleaning.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvCleaning.Location = New Point(12, 273)
+        dgvCleaning.Location = New Point(50, 280)
         dgvCleaning.Name = "dgvCleaning"
         dgvCleaning.RowHeadersWidth = 51
-        dgvCleaning.Size = New Size(776, 165)
+        dgvCleaning.Size = New Size(700, 200)
         dgvCleaning.TabIndex = 9
         ' 
         ' btnBack
         ' 
+        btnBack.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
+        btnBack.FlatStyle = FlatStyle.Flat
+        btnBack.FlatAppearance.BorderSize = 0
+        btnBack.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        btnBack.ForeColor = Color.White
         btnBack.Location = New Point(12, 12)
         btnBack.Name = "btnBack"
-        btnBack.Size = New Size(146, 29)
+        btnBack.Size = New Size(100, 35)
         btnBack.TabIndex = 10
-        btnBack.Text = "Back to Dashboard"
-        btnBack.UseVisualStyleBackColor = True
+        btnBack.Text = "← Back"
+        btnBack.UseVisualStyleBackColor = False
         ' 
         ' frmCleaningSchedule
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        BackColor = Color.FromArgb(CByte(236), CByte(240), CByte(241))
+        ClientSize = New Size(800, 500)
         Controls.Add(btnBack)
         Controls.Add(dgvCleaning)
         Controls.Add(btnDeleteClean)
@@ -150,6 +174,7 @@ Partial Class frmCleaningSchedule
         Controls.Add(Label2)
         Controls.Add(Label1)
         Name = "frmCleaningSchedule"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Cleaning Schedule"
         CType(dgvCleaning, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

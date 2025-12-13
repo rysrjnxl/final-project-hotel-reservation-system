@@ -1,9 +1,8 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmRoomManagement
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -14,13 +13,9 @@ Partial Class frmRoomManagement
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Label1 = New Label()
         Label2 = New Label()
@@ -39,102 +34,131 @@ Partial Class frmRoomManagement
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(61, 89)
+        Label1.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        Label1.Location = New Point(50, 70)
         Label1.Name = "Label1"
-        Label1.Size = New Size(110, 20)
+        Label1.Size = New Size(90, 23)
         Label1.TabIndex = 0
-        Label1.Text = "Room Number:"
+        Label1.Text = "Room No:"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(84, 125)
+        Label2.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        Label2.Location = New Point(50, 115)
         Label2.Name = "Label2"
-        Label2.Size = New Size(87, 20)
+        Label2.Size = New Size(54, 23)
         Label2.TabIndex = 1
-        Label2.Text = "Room Type:"
+        Label2.Text = "Type:"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(62, 165)
+        Label3.Font = New Font("Segoe UI", 10.2F, FontStyle.Bold)
+        Label3.Location = New Point(50, 160)
         Label3.Name = "Label3"
-        Label3.Size = New Size(109, 20)
+        Label3.Size = New Size(50, 23)
         Label3.TabIndex = 2
-        Label3.Text = "Rate per Night:"
+        Label3.Text = "Rate:"
         ' 
         ' txtRoomNumber
         ' 
-        txtRoomNumber.Location = New Point(177, 86)
+        txtRoomNumber.Font = New Font("Segoe UI", 10.0F)
+        txtRoomNumber.Location = New Point(150, 67)
         txtRoomNumber.Name = "txtRoomNumber"
-        txtRoomNumber.Size = New Size(151, 27)
+        txtRoomNumber.Size = New Size(230, 30)
         txtRoomNumber.TabIndex = 3
         ' 
         ' cmbRoomType
         ' 
+        cmbRoomType.Font = New Font("Segoe UI", 10.0F)
         cmbRoomType.FormattingEnabled = True
-        cmbRoomType.Location = New Point(177, 122)
+        cmbRoomType.Location = New Point(150, 112)
         cmbRoomType.Name = "cmbRoomType"
-        cmbRoomType.Size = New Size(151, 28)
+        cmbRoomType.Size = New Size(230, 31)
         cmbRoomType.TabIndex = 4
         ' 
         ' txtRate
         ' 
-        txtRate.Location = New Point(177, 162)
+        txtRate.Font = New Font("Segoe UI", 10.0F)
+        txtRate.Location = New Point(150, 157)
         txtRate.Name = "txtRate"
-        txtRate.Size = New Size(151, 27)
+        txtRate.Size = New Size(230, 30)
         txtRate.TabIndex = 5
         ' 
         ' btnAddRoom
         ' 
-        btnAddRoom.Location = New Point(61, 244)
+        btnAddRoom.BackColor = Color.FromArgb(CByte(46), CByte(204), CByte(113))
+        btnAddRoom.FlatStyle = FlatStyle.Flat
+        btnAddRoom.FlatAppearance.BorderSize = 0
+        btnAddRoom.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        btnAddRoom.ForeColor = Color.White
+        btnAddRoom.Location = New Point(50, 220)
         btnAddRoom.Name = "btnAddRoom"
-        btnAddRoom.Size = New Size(94, 29)
+        btnAddRoom.Size = New Size(100, 40)
         btnAddRoom.TabIndex = 6
         btnAddRoom.Text = "Add"
-        btnAddRoom.UseVisualStyleBackColor = True
+        btnAddRoom.UseVisualStyleBackColor = False
         ' 
         ' btnUpdateRoom
         ' 
-        btnUpdateRoom.Location = New Point(161, 244)
+        btnUpdateRoom.BackColor = Color.FromArgb(CByte(243), CByte(156), CByte(18))
+        btnUpdateRoom.FlatStyle = FlatStyle.Flat
+        btnUpdateRoom.FlatAppearance.BorderSize = 0
+        btnUpdateRoom.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        btnUpdateRoom.ForeColor = Color.White
+        btnUpdateRoom.Location = New Point(160, 220)
         btnUpdateRoom.Name = "btnUpdateRoom"
-        btnUpdateRoom.Size = New Size(94, 29)
+        btnUpdateRoom.Size = New Size(100, 40)
         btnUpdateRoom.TabIndex = 7
         btnUpdateRoom.Text = "Update"
-        btnUpdateRoom.UseVisualStyleBackColor = True
+        btnUpdateRoom.UseVisualStyleBackColor = False
         ' 
         ' btnDeleteRoom
         ' 
-        btnDeleteRoom.Location = New Point(261, 244)
+        btnDeleteRoom.BackColor = Color.FromArgb(CByte(231), CByte(76), CByte(60))
+        btnDeleteRoom.FlatStyle = FlatStyle.Flat
+        btnDeleteRoom.FlatAppearance.BorderSize = 0
+        btnDeleteRoom.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        btnDeleteRoom.ForeColor = Color.White
+        btnDeleteRoom.Location = New Point(270, 220)
         btnDeleteRoom.Name = "btnDeleteRoom"
-        btnDeleteRoom.Size = New Size(94, 29)
+        btnDeleteRoom.Size = New Size(100, 40)
         btnDeleteRoom.TabIndex = 8
         btnDeleteRoom.Text = "Delete"
-        btnDeleteRoom.UseVisualStyleBackColor = True
+        btnDeleteRoom.UseVisualStyleBackColor = False
         ' 
         ' DataGridView1
         ' 
+        DataGridView1.BackgroundColor = Color.White
+        DataGridView1.BorderStyle = BorderStyle.None
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Location = New Point(12, 291)
+        DataGridView1.Location = New Point(50, 280)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.RowHeadersWidth = 51
-        DataGridView1.Size = New Size(776, 147)
+        DataGridView1.Size = New Size(700, 200)
         DataGridView1.TabIndex = 9
         ' 
         ' btnBack
         ' 
+        btnBack.BackColor = Color.FromArgb(CByte(44), CByte(62), CByte(80))
+        btnBack.FlatStyle = FlatStyle.Flat
+        btnBack.FlatAppearance.BorderSize = 0
+        btnBack.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        btnBack.ForeColor = Color.White
         btnBack.Location = New Point(12, 12)
         btnBack.Name = "btnBack"
-        btnBack.Size = New Size(146, 29)
+        btnBack.Size = New Size(100, 35)
         btnBack.TabIndex = 11
-        btnBack.Text = "Back to Dashboard"
-        btnBack.UseVisualStyleBackColor = True
+        btnBack.Text = "← Back"
+        btnBack.UseVisualStyleBackColor = False
         ' 
         ' frmRoomManagement
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        BackColor = Color.FromArgb(CByte(236), CByte(240), CByte(241))
+        ClientSize = New Size(800, 500)
         Controls.Add(btnBack)
         Controls.Add(DataGridView1)
         Controls.Add(btnDeleteRoom)
@@ -147,6 +171,7 @@ Partial Class frmRoomManagement
         Controls.Add(Label2)
         Controls.Add(Label1)
         Name = "frmRoomManagement"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Room Management"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
