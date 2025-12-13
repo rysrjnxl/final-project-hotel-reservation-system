@@ -86,7 +86,7 @@
                     ExecuteQuery("UPDATE rooms SET status='Occupied' WHERE id=" & roomId)
                 End If
 
-                MsgBox("Booking Successful! Total Cost: " & total.ToString("C"), MsgBoxStyle.Information)
+                MsgBox("Booking Successful! Total Cost: " & total.ToString("N2"), MsgBoxStyle.Information)
 
                 CurrentGuestID = 0
                 Dim login As New LoginForm
@@ -109,7 +109,7 @@
             Dim price As Decimal = Convert.ToDecimal(dt.Rows(0)("price"))
             Dim days As Integer = DateDiff(DateInterval.Day, dtCheckIn.Value, dtCheckOut.Value)
             If days < 1 Then days = 1
-            lblTotal.Text = "Est. Total: " & (price * days).ToString("C")
+            lblTotal.Text = "Est. Total: " & (price * days).ToString("N2")
         End If
     End Sub
 
