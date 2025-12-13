@@ -3,14 +3,11 @@
     Private Sub frmClientBooking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ApplyTheme(Me)
 
-        ' 1. Load Room Types
         LoadRoomTypes()
 
-        ' 2. Set Date Limits
         dtCheckIn.MinDate = DateTime.Now
         dtCheckOut.MinDate = DateTime.Now.AddDays(1)
 
-        ' 3. Strict Check: User MUST be logged in
         If CurrentGuestID = 0 Then
             MsgBox("Session expired. Please log in again.", MsgBoxStyle.Critical)
             Dim login As New LoginForm
@@ -19,13 +16,11 @@
             Return
         End If
 
-        ' 4. Auto-fill info
         PreFillGuestInfo()
     End Sub
 
-    ' --- LOAD ROOM TYPES FIX ---
     Sub LoadRoomTypes()
-        cmbRoomType.Items.Clear() ' Clear previous items to avoid duplicates
+        cmbRoomType.Items.Clear()
         Try
             Dim dt As DataTable = GetData("SELECT DISTINCT room_type FROM rooms")
             If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
@@ -33,8 +28,6 @@
                     cmbRoomType.Items.Add(row("room_type").ToString())
                 Next
             Else
-                ' If this message appears, your database 'rooms' table is empty!
-                ' MsgBox("Warning: No room types found in the database.", MsgBoxStyle.Exclamation) 
             End If
         Catch ex As Exception
             MsgBox("Error loading room types: " & ex.Message)
@@ -49,13 +42,11 @@
                 txtPhone.Text = dt.Rows(0)("phone").ToString()
                 txtEmail.Text = dt.Rows(0)("email").ToString()
 
-                ' Lock fields
                 txtName.Enabled = False
                 txtPhone.Enabled = False
                 txtEmail.Enabled = False
             End If
         Catch ex As Exception
-            ' Silent fail or log
         End Try
     End Sub
 
@@ -69,8 +60,6 @@
         Dim checkIn As String = dtCheckIn.Value.ToString("yyyy-MM-dd")
         Dim checkOut As String = dtCheckOut.Value.ToString("yyyy-MM-dd")
 
-        ' --- DOUBLE BOOKING PREVENTION LOGIC ---
-        ' Find a room of this type that DOES NOT have a reservation overlapping the requested dates
         Dim sqlAvailability As String = "SELECT id, price FROM rooms " &
                                         "WHERE room_type='" & roomType & "' " &
                                         "AND id NOT IN (" &
