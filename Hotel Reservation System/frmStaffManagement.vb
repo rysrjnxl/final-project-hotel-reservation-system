@@ -44,4 +44,34 @@
         dash.Show()
         Me.Hide()
     End Sub
+
+    Private Sub btnUpdateStaff_Click(sender As Object, e As EventArgs) Handles btnUpdateStaff.Click
+        If selectedId = "" Then
+            MsgBox("Please select a staff member to update.")
+            Return
+        End If
+
+        If txtStaffName.Text = "" Or cmbPosition.Text = "" Then
+            MsgBox("Please fill in Name and Position.")
+            Return
+        End If
+
+        Try
+            Dim sql As String = "UPDATE staff SET full_name='" & txtStaffName.Text &
+                                "', position='" & cmbPosition.Text &
+                                "', phone='" & txtStaffPhone.Text &
+                                "' WHERE id=" & selectedId
+            ExecuteQuery(sql)
+
+            MsgBox("Staff Member Updated Successfully!")
+            LoadStaff()
+
+            txtStaffName.Clear()
+            txtStaffPhone.Clear()
+            cmbPosition.SelectedIndex = -1
+            selectedId = ""
+        Catch ex As Exception
+            MsgBox("Error updating staff: " & ex.Message)
+        End Try
+    End Sub
 End Class

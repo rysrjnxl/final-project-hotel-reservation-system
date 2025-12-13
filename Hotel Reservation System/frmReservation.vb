@@ -42,22 +42,65 @@
         End If
     End Sub
 
+    ' --- 1. FILL FORM WHEN CLICKING A ROW ---
     Private Sub dgvReservation_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvReservation.CellClick
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow = dgvReservation.Rows(e.RowIndex)
 
+            ' Store IDs for the update logic
             selectedResId = row.Cells("id").Value.ToString()
             selectedRoomId = row.Cells("room_id").Value.ToString()
 
+            ' Set Dropdowns
             cmbGuest.SelectedValue = row.Cells("guest_id").Value
             cmbRoom.SelectedValue = row.Cells("room_id").Value
 
+            ' Set Dates (Safely)
             Try
                 dtCheckIn.Value = Convert.ToDateTime(row.Cells("check_in").Value)
                 dtCheckOut.Value = Convert.ToDateTime(row.Cells("check_out").Value)
             Catch
             End Try
         End If
+    End Sub
+
+    Private Sub btnUpdateRes_Click(sender As Object, e As EventArgs) Handles btnUpdateRes.Click
+        If selectedResId = "" Then
+            MsgBox("Please select a reservation to update.", MsgBoxStyle.Exclamation)
+            Exit Sub
+        End If
+
+        Dim guestId As Integer = Convert.ToInt32(cmbGuest.SelectedValue)
+        Dim newRoomId As String = cmbRoom.SelectedValue.ToString()
+
+        Dim days As Integer = DateDiff(DateInterval.Day, dtCheckIn.Value, dtCheckOut.Value)
+        If days < 1 Then days = 1
+        Dim dtPrice As DataTable = GetData("SELECT price FROM rooms WHERE id=" & newRoomId)
+        Dim price As Decimal = 0
+        If dtPrice.Rows.Count > 0 Then price = Convert.ToDecimal(dtPrice.Rows(0)("price"))
+        Dim total As Decimal = price * days
+
+        Try
+            Dim sql As String = "UPDATE reservations SET guest_id=" & guestId & ", room_id=" & newRoomId &
+                                ", check_in='" & dtCheckIn.Value.ToString("yyyy-MM-dd") &
+                                "', check_out='" & dtCheckOut.Value.ToString("yyyy-MM-dd") &
+                                "', total_amount=" & total & " WHERE id=" & selectedResId
+            ExecuteQuery(sql)
+
+            If newRoomId <> selectedRoomId Then
+                ExecuteQuery("UPDATE rooms SET status='Available' WHERE id=" & selectedRoomId)
+
+                If dtCheckIn.Value.Date = DateTime.Now.Date Then
+                    ExecuteQuery("UPDATE rooms SET status='Occupied' WHERE id=" & newRoomId)
+                End If
+            End If
+
+            MsgBox("Reservation Updated! New Total: ₱" & total.ToString("N2"))
+            LoadReservations()
+            selectedResId = ""
+        Catch ex As Exception
+            MsgBox("Update Failed: " & ex.Message)
+        End Try
     End Sub
 
     Private Sub btnAddRes_Click(sender As Object, e As EventArgs) Handles btnAddRes.Click
@@ -86,37 +129,7 @@
         End Try
     End Sub
 
-    Private Sub btnUpdateRes_Click(sender As Object, e As EventArgs) Handles btnUpdateRes.Click
-        If selectedResId = "" Then
-            MsgBox("Please select a reservation to update.", MsgBoxStyle.Exclamation)
-            Exit Sub
-        End If
 
-        Dim guestId As Integer = Convert.ToInt32(cmbGuest.SelectedValue)
-        Dim newRoomId As String = cmbRoom.SelectedValue.ToString()
-        Dim total As Decimal = CalculateTotal(Convert.ToInt32(newRoomId))
-
-        Try
-            Dim sql As String = "UPDATE reservations SET guest_id=" & guestId & ", room_id=" & newRoomId &
-                                ", check_in='" & dtCheckIn.Value.ToString("yyyy-MM-dd") &
-                                "', check_out='" & dtCheckOut.Value.ToString("yyyy-MM-dd") &
-                                "', total_amount=" & total & " WHERE id=" & selectedResId
-            ExecuteQuery(sql)
-
-            If newRoomId <> selectedRoomId Then
-                ExecuteQuery("UPDATE rooms SET status='Available' WHERE id=" & selectedRoomId)
-                If dtCheckIn.Value.Date = DateTime.Now.Date Then
-                    ExecuteQuery("UPDATE rooms SET status='Occupied' WHERE id=" & newRoomId)
-                End If
-            End If
-
-            MsgBox("Reservation Updated! New Total: ₱" & total.ToString("N2"))
-            LoadReservations()
-            selectedResId = ""
-        Catch ex As Exception
-            MsgBox("Update Failed: " & ex.Message)
-        End Try
-    End Sub
 
     Private Sub btnDeleteRes_Click(sender As Object, e As EventArgs) Handles btnDeleteRes.Click
         If selectedResId = "" Then
