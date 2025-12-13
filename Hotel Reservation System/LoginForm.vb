@@ -47,4 +47,10 @@
             MsgBox("Error connecting to database: " & ex.Message)
         End Try
     End Sub
+
+    Private Sub Passwordtxtbx_KeyDown(sender As Object, e As KeyEventArgs) Handles txtbxPassword.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            btnLogin.PerformClick()
+        End If
+    End Sub
 End Class

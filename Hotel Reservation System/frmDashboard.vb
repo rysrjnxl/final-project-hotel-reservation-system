@@ -62,31 +62,31 @@ Public Class frmDashboard
 
     Private Sub btnGuest_Click(sender As Object, e As EventArgs) Handles btnGuest.Click
         Dim f As New frmGuestManagement
-        SlideInForm(f)
+        f.Show()
         Me.Hide()
     End Sub
 
     Private Sub btnRoom_Click(sender As Object, e As EventArgs) Handles btnRoom.Click
         Dim f As New frmRoomManagement
-        SlideInForm(f)
+        f.Show()
         Me.Hide()
     End Sub
 
     Private Sub btnReservation_Click(sender As Object, e As EventArgs) Handles btnReservation.Click
         Dim f As New frmReservation
-        SlideInForm(f)
+        f.Show()
         Me.Hide()
     End Sub
 
     Private Sub btnStaff_Click(sender As Object, e As EventArgs) Handles btnStaff.Click
         Dim f As New frmStaffManagement
-        SlideInForm(f)
+        f.Show()
         Me.Hide()
     End Sub
 
     Private Sub btnCleaning_Click(sender As Object, e As EventArgs) Handles btnCleaning.Click
         Dim f As New frmCleaningSchedule
-        SlideInForm(f)
+        f.Show()
         Me.Hide()
     End Sub
 

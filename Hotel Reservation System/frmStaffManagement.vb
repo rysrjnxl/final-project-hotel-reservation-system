@@ -34,7 +34,7 @@
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Dim dash As New frmDashboard
-        dash.Show() ' Dashboard doesn't use SlideIn in your original code, adjusted here
+        dash.Show()
         Me.Hide()
     End Sub
 End Class

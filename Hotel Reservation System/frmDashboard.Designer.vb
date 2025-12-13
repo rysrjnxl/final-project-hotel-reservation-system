@@ -58,10 +58,10 @@ Partial Class frmDashboard
         pnlAvailable.BackColor = Color.FromArgb(CByte(52), CByte(152), CByte(219))
         pnlAvailable.Controls.Add(Label3)
         pnlAvailable.Controls.Add(lblAvailableRooms)
-        pnlAvailable.Location = New Point(350, 125)
-        pnlAvailable.Margin = New Padding(4, 4, 4, 4)
+        pnlAvailable.Location = New Point(543, 171)
+        pnlAvailable.Margin = New Padding(4)
         pnlAvailable.Name = "pnlAvailable"
-        pnlAvailable.Size = New Size(300, 150)
+        pnlAvailable.Size = New Size(300, 181)
         pnlAvailable.TabIndex = 6
         ' 
         ' Label3
@@ -93,10 +93,10 @@ Partial Class frmDashboard
         pnlStaff.BackColor = Color.FromArgb(CByte(46), CByte(204), CByte(113))
         pnlStaff.Controls.Add(Label2)
         pnlStaff.Controls.Add(lblStaffOnDuty)
-        pnlStaff.Location = New Point(675, 300)
-        pnlStaff.Margin = New Padding(4, 4, 4, 4)
+        pnlStaff.Location = New Point(868, 380)
+        pnlStaff.Margin = New Padding(4)
         pnlStaff.Name = "pnlStaff"
-        pnlStaff.Size = New Size(300, 150)
+        pnlStaff.Size = New Size(300, 181)
         pnlStaff.TabIndex = 8
         ' 
         ' Label2
@@ -128,10 +128,10 @@ Partial Class frmDashboard
         pnlTotalGuests.BackColor = Color.FromArgb(CByte(155), CByte(89), CByte(182))
         pnlTotalGuests.Controls.Add(Label5)
         pnlTotalGuests.Controls.Add(lblTotalGuests)
-        pnlTotalGuests.Location = New Point(350, 300)
-        pnlTotalGuests.Margin = New Padding(4, 4, 4, 4)
+        pnlTotalGuests.Location = New Point(543, 380)
+        pnlTotalGuests.Margin = New Padding(4)
         pnlTotalGuests.Name = "pnlTotalGuests"
-        pnlTotalGuests.Size = New Size(300, 150)
+        pnlTotalGuests.Size = New Size(300, 181)
         pnlTotalGuests.TabIndex = 7
         ' 
         ' Label5
@@ -163,10 +163,10 @@ Partial Class frmDashboard
         pnlTodayRes.BackColor = Color.FromArgb(CByte(230), CByte(126), CByte(34))
         pnlTodayRes.Controls.Add(label)
         pnlTodayRes.Controls.Add(lblTodayRes)
-        pnlTodayRes.Location = New Point(675, 125)
-        pnlTodayRes.Margin = New Padding(4, 4, 4, 4)
+        pnlTodayRes.Location = New Point(868, 171)
+        pnlTodayRes.Margin = New Padding(4)
         pnlTodayRes.Name = "pnlTodayRes"
-        pnlTodayRes.Size = New Size(300, 150)
+        pnlTodayRes.Size = New Size(300, 181)
         pnlTodayRes.TabIndex = 9
         ' 
         ' label
@@ -200,8 +200,8 @@ Partial Class frmDashboard
         btnGuest.FlatStyle = FlatStyle.Flat
         btnGuest.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnGuest.ForeColor = Color.White
-        btnGuest.Location = New Point(0, 171)
-        btnGuest.Margin = New Padding(4, 4, 4, 4)
+        btnGuest.Location = New Point(1, 260)
+        btnGuest.Margin = New Padding(4)
         btnGuest.Name = "btnGuest"
         btnGuest.Padding = New Padding(25, 0, 0, 0)
         btnGuest.Size = New Size(312, 75)
@@ -217,8 +217,8 @@ Partial Class frmDashboard
         btnRoom.FlatStyle = FlatStyle.Flat
         btnRoom.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnRoom.ForeColor = Color.White
-        btnRoom.Location = New Point(0, 239)
-        btnRoom.Margin = New Padding(4, 4, 4, 4)
+        btnRoom.Location = New Point(1, 328)
+        btnRoom.Margin = New Padding(4)
         btnRoom.Name = "btnRoom"
         btnRoom.Padding = New Padding(25, 0, 0, 0)
         btnRoom.Size = New Size(312, 75)
@@ -234,8 +234,8 @@ Partial Class frmDashboard
         btnReservation.FlatStyle = FlatStyle.Flat
         btnReservation.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnReservation.ForeColor = Color.White
-        btnReservation.Location = New Point(0, 101)
-        btnReservation.Margin = New Padding(4, 4, 4, 4)
+        btnReservation.Location = New Point(1, 190)
+        btnReservation.Margin = New Padding(4)
         btnReservation.Name = "btnReservation"
         btnReservation.Padding = New Padding(25, 0, 0, 0)
         btnReservation.Size = New Size(312, 75)
@@ -251,8 +251,8 @@ Partial Class frmDashboard
         btnStaff.FlatStyle = FlatStyle.Flat
         btnStaff.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnStaff.ForeColor = Color.White
-        btnStaff.Location = New Point(0, 312)
-        btnStaff.Margin = New Padding(4, 4, 4, 4)
+        btnStaff.Location = New Point(1, 401)
+        btnStaff.Margin = New Padding(4)
         btnStaff.Name = "btnStaff"
         btnStaff.Padding = New Padding(25, 0, 0, 0)
         btnStaff.Size = New Size(312, 75)
@@ -268,8 +268,8 @@ Partial Class frmDashboard
         btnCleaning.FlatStyle = FlatStyle.Flat
         btnCleaning.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnCleaning.ForeColor = Color.White
-        btnCleaning.Location = New Point(0, 380)
-        btnCleaning.Margin = New Padding(4, 4, 4, 4)
+        btnCleaning.Location = New Point(1, 469)
+        btnCleaning.Margin = New Padding(4)
         btnCleaning.Name = "btnCleaning"
         btnCleaning.Padding = New Padding(25, 0, 0, 0)
         btnCleaning.Size = New Size(312, 75)
@@ -283,7 +283,7 @@ Partial Class frmDashboard
         AutoScaleDimensions = New SizeF(10.0F, 25.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(236), CByte(240), CByte(241))
-        ClientSize = New Size(1000, 562)
+        ClientSize = New Size(1253, 670)
         Controls.Add(btnCleaning)
         Controls.Add(pnlTodayRes)
         Controls.Add(btnStaff)
@@ -295,7 +295,7 @@ Partial Class frmDashboard
         Controls.Add(pnlAvailable)
         Controls.Add(Label1)
         FormBorderStyle = FormBorderStyle.FixedSingle
-        Margin = New Padding(4, 4, 4, 4)
+        Margin = New Padding(4)
         MaximizeBox = False
         Name = "frmDashboard"
         StartPosition = FormStartPosition.CenterScreen

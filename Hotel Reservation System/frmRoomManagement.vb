@@ -1,4 +1,6 @@
-﻿Public Class frmRoomManagement
+﻿Imports System.Drawing.Drawing2D
+
+Public Class frmRoomManagement
     Dim selectedId As String = ""
 
     Private Sub frmRoomManagement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -44,7 +46,7 @@
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Dim dash As New frmDashboard
-        SlideInForm(dash)
+        dash.Show()
         Me.Hide()
     End Sub
 End Class
