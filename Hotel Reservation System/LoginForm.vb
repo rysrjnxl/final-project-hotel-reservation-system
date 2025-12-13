@@ -53,4 +53,10 @@
             btnLogin.PerformClick()
         End If
     End Sub
+
+    Private Sub linkSignUp_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkSignUp.LinkClicked
+        Dim reg As New frmGuestRegistration
+        reg.Show()
+        Me.Hide()
+    End Sub
 End Class
