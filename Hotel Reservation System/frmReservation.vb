@@ -78,4 +78,35 @@
         dash.Show()
         Me.Hide()
     End Sub
+
+    Private Sub btnDeleteRes_Click(sender As Object, e As EventArgs) Handles btnDeleteRes.Click
+        If dgvReservation.SelectedRows.Count = 0 Then
+            MsgBox("Please select a reservation to delete.", MsgBoxStyle.Exclamation)
+            Exit Sub
+        End If
+
+        If MsgBox("Are you sure you want to delete this reservation?", MsgBoxStyle.YesNo + MsgBoxStyle.Question) = MsgBoxResult.Yes Then
+            Try
+                Dim resId As String = dgvReservation.SelectedRows(0).Cells(0).Value.ToString()
+
+                Dim dt As DataTable = GetData("SELECT room_id FROM reservations WHERE id=" & resId)
+
+                If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+                    Dim roomId As String = dt.Rows(0)("room_id").ToString()
+
+                    ExecuteQuery("DELETE FROM reservations WHERE id=" & resId)
+
+                    ExecuteQuery("UPDATE rooms SET status='Available' WHERE id=" & roomId)
+
+                    MsgBox("Reservation Deleted Successfully!", MsgBoxStyle.Information)
+
+                    LoadReservations()
+                    LoadCombos()
+                End If
+
+            Catch ex As Exception
+                MsgBox("Error deleting reservation: " & ex.Message)
+            End Try
+        End If
+    End Sub
 End Class

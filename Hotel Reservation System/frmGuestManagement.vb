@@ -15,7 +15,8 @@
                             "FROM reservations r " &
                             "JOIN guests g ON r.guest_id = g.id " &
                             "JOIN rooms rm ON r.room_id = rm.id " &
-                            "ORDER BY r.check_in DESC"
+                            "WHERE r.check_in <= CURDATE() AND r.check_out >= CURDATE() " &
+                            "ORDER BY r.check_out ASC"
 
         Dim dt As DataTable = GetData(sql)
         dgvGuestStays.DataSource = dt
