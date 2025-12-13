@@ -209,7 +209,7 @@ Partial Class frmClientBooking
         lblTotal.Name = "lblTotal"
         lblTotal.Size = New Size(223, 38)
         lblTotal.TabIndex = 15
-        lblTotal.Text = "Est. Total: $0.00"
+        lblTotal.Text = "Est. Total: ₱0.00"
         ' 
         ' btnHistory
         ' 
