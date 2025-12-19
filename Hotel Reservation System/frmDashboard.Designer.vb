@@ -38,6 +38,7 @@ Partial Class frmDashboard
         btnGuest = New Button()
         btnReservation = New Button()
         pnlSidebar = New Panel()
+        GuestsAccounts = New Button()
         pnlAvailable.SuspendLayout()
         pnlStaff.SuspendLayout()
         pnlTotalGuests.SuspendLayout()
@@ -320,6 +321,7 @@ Partial Class frmDashboard
         ' pnlSidebar
         ' 
         pnlSidebar.BackColor = Color.FromArgb(CByte(12), CByte(52), CByte(51))
+        pnlSidebar.Controls.Add(GuestsAccounts)
         pnlSidebar.Controls.Add(btnReservation)
         pnlSidebar.Controls.Add(btnGuest)
         pnlSidebar.Controls.Add(btnRoom)
@@ -333,6 +335,23 @@ Partial Class frmDashboard
         pnlSidebar.Name = "pnlSidebar"
         pnlSidebar.Size = New Size(350, 688)
         pnlSidebar.TabIndex = 10
+        ' 
+        ' GuestsAccounts
+        ' 
+        GuestsAccounts.BackColor = Color.FromArgb(CByte(12), CByte(52), CByte(51))
+        GuestsAccounts.FlatAppearance.BorderSize = 0
+        GuestsAccounts.FlatStyle = FlatStyle.Flat
+        GuestsAccounts.Font = New Font("Segoe UI", 11.0F)
+        GuestsAccounts.ForeColor = Color.White
+        GuestsAccounts.Location = New Point(0, 465)
+        GuestsAccounts.Margin = New Padding(4)
+        GuestsAccounts.Name = "GuestsAccounts"
+        GuestsAccounts.Padding = New Padding(25, 0, 0, 0)
+        GuestsAccounts.Size = New Size(350, 75)
+        GuestsAccounts.TabIndex = 12
+        GuestsAccounts.Text = "Guests Accounts"
+        GuestsAccounts.TextAlign = ContentAlignment.MiddleLeft
+        GuestsAccounts.UseVisualStyleBackColor = False
         ' 
         ' frmDashboard
         ' 
@@ -386,4 +405,5 @@ Partial Class frmDashboard
     Friend WithEvents btnGuest As Button
     Friend WithEvents btnReservation As Button
     Friend WithEvents pnlSidebar As Panel
+    Friend WithEvents GuestsAccounts As Button
 End Class

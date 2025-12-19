@@ -91,8 +91,8 @@ Public Class frmDashboard
 
     Private Sub btnUsers_Click(sender As Object, e As EventArgs) Handles btnUsers.Click
         Dim f As New frmUserManagement
-        f.Show()
-        Me.Hide()
+        f.Show
+        Hide
     End Sub
 
     Public Sub RoundPanel(p As Panel)
@@ -112,4 +112,9 @@ Public Class frmDashboard
         Me.Hide()
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles GuestsAccounts.Click
+        Dim accounts As New frmGuestAccounts
+        accounts.Show()
+        Me.Hide()
+    End Sub
 End Class
