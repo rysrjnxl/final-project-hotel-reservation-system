@@ -1,16 +1,12 @@
 ﻿Imports System.Drawing.Drawing2D
 
 Public Class frmDashboard
-
-    ' This runs automatically when the Dashboard opens
     Private Sub frmDashbaord_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadDashboardStats()
     End Sub
 
     Private Sub LoadDashboardStats()
         Try
-            ' 1. Get Count of Available Rooms
-            ' We check the 'rooms' table where status is 'Available'
             Dim dtRooms As DataTable = GetData("SELECT COUNT(*) FROM rooms WHERE status='Available'")
             If dtRooms IsNot Nothing AndAlso dtRooms.Rows.Count > 0 Then
                 lblAvailableRooms.Text = dtRooms.Rows(0)(0).ToString()
@@ -18,7 +14,6 @@ Public Class frmDashboard
                 lblAvailableRooms.Text = "0"
             End If
 
-            ' 2. Get Total Count of Guests
             Dim dtGuests As DataTable = GetData("SELECT COUNT(*) FROM guests")
             If dtGuests IsNot Nothing AndAlso dtGuests.Rows.Count > 0 Then
                 lblTotalGuests.Text = dtGuests.Rows(0)(0).ToString()
@@ -26,7 +21,6 @@ Public Class frmDashboard
                 lblTotalGuests.Text = "0"
             End If
 
-            ''3. Get Count of Staff
             Dim dtStaff As DataTable = GetData("SELECT COUNT(*) FROM staff")
             If dtStaff IsNot Nothing AndAlso dtStaff.Rows.Count > 0 Then
                 lblStaffOnDuty.Text = dtStaff.Rows(0)(0).ToString()
@@ -34,8 +28,6 @@ Public Class frmDashboard
                 lblStaffOnDuty.Text = "0"
             End If
 
-            ' 4. Get Today's Reservations
-            ' Check reservations where the check_in date matches today's date (CURDATE)
             Dim dtRes As DataTable = GetData("SELECT COUNT(*) FROM reservations WHERE check_in = CURDATE()")
             If dtRes IsNot Nothing AndAlso dtRes.Rows.Count > 0 Then
                 lblTodayRes.Text = dtRes.Rows(0)(0).ToString()
@@ -91,8 +83,8 @@ Public Class frmDashboard
 
     Private Sub btnUsers_Click(sender As Object, e As EventArgs) Handles btnUsers.Click
         Dim f As New frmUserManagement
-        f.Show
-        Hide
+        f.Show()
+        Hide()
     End Sub
 
     Public Sub RoundPanel(p As Panel)
