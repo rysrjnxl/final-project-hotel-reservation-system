@@ -3,6 +3,7 @@
     Private Sub frmClientBooking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ApplyTheme(Me)
 
+        ' 1. Load Custom Room Names
         LoadRoomTypes()
 
         dtCheckIn.MinDate = DateTime.Now
@@ -18,17 +19,40 @@
 
         PreFillGuestInfo()
     End Sub
-
     Sub LoadRoomTypes()
-        cmbRoomType.Items.Clear()
         Try
-            Dim dt As DataTable = GetData("SELECT DISTINCT room_type FROM rooms")
-            If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
-                For Each row As DataRow In dt.Rows
-                    cmbRoomType.Items.Add(row("room_type").ToString())
+            Dim dtDB As DataTable = GetData("SELECT DISTINCT room_type FROM rooms")
+
+            ' Create a temporary table for the Dropdown
+            Dim dtCombo As New DataTable()
+            dtCombo.Columns.Add("Display")
+            dtCombo.Columns.Add("Value")
+
+            If dtDB IsNot Nothing AndAlso dtDB.Rows.Count > 0 Then
+                For Each row As DataRow In dtDB.Rows
+                    Dim realType As String = row("room_type").ToString()
+                    Dim customName As String = realType
+
+                    Select Case realType
+                        Case "Single"
+                            customName = "Single (Good for 1)"
+                        Case "Double"
+                            customName = "Double (Good for 2)"
+                        Case "Suite"
+                            customName = "Suite (Max 4 Persons)"
+                        Case Else
+                            customName = realType
+                    End Select
+
+                    dtCombo.Rows.Add(customName, realType)
                 Next
-            Else
             End If
+
+            cmbRoomType.DataSource = dtCombo
+            cmbRoomType.DisplayMember = "Display"
+            cmbRoomType.ValueMember = "Value"
+            cmbRoomType.SelectedIndex = -1
+
         Catch ex As Exception
             MsgBox("Error loading room types: " & ex.Message)
         End Try
@@ -51,17 +75,16 @@
     End Sub
 
     Private Sub btnBookNow_Click(sender As Object, e As EventArgs) Handles btnBookNow.Click
-        ' 1. Validation
         If cmbRoomType.SelectedIndex = -1 Then
             MsgBox("Please select a Room Type.", MsgBoxStyle.Exclamation)
             Exit Sub
         End If
 
-        Dim roomType As String = cmbRoomType.Text
+        Dim roomType As String = cmbRoomType.SelectedValue.ToString()
         Dim checkIn As String = dtCheckIn.Value.ToString("yyyy-MM-dd")
         Dim checkOut As String = dtCheckOut.Value.ToString("yyyy-MM-dd")
 
-        ' 2. PREVENT SAME GUEST DOUBLE BOOKING (Checks if reservation exists)
+        ' 1. DUPLICATE CHECK: Prevent same guest from booking same dates twice
         Dim sqlMyBookings As String = "SELECT id FROM reservations " &
                                       "WHERE guest_id=" & CurrentGuestID & " " &
                                       "AND check_in < '" & checkOut & "' AND check_out > '" & checkIn & "'"
@@ -71,7 +94,7 @@
             Exit Sub
         End If
 
-        ' 3. FIND AVAILABLE ROOM
+        ' 2. FIND AVAILABLE ROOM
         Dim sqlAvailability As String = "SELECT id, price FROM rooms " &
                                         "WHERE room_type='" & roomType & "' " &
                                         "AND id NOT IN (" &
@@ -90,7 +113,7 @@
             Dim total As Decimal = price * days
 
             Try
-                ' 4. INSERT RESERVATION
+                ' 3. INSERT RESERVATION
                 Dim sqlBook As String = "INSERT INTO reservations(guest_id, room_id, check_in, check_out, total_amount) " &
                                         "VALUES(" & CurrentGuestID & ", " & roomId & ", '" & checkIn & "', '" & checkOut & "', " & total & ")"
                 ExecuteQuery(sqlBook)
@@ -99,8 +122,9 @@
                     ExecuteQuery("UPDATE rooms SET status='Occupied' WHERE id=" & roomId)
                 End If
 
-                MsgBox("Booking Successful! Total Cost: " & total.ToString("C"), MsgBoxStyle.Information)
+                MsgBox("Booking Successful! Total Cost: ₱" & total.ToString("N2"), MsgBoxStyle.Information)
 
+                ' 4. RESET FORM (Stay Logged In)
                 cmbRoomType.SelectedIndex = -1
                 lblTotal.Text = "Est. Total: ₱0.00"
 
@@ -115,12 +139,14 @@
     Private Sub UpdateTotal(sender As Object, e As EventArgs) Handles cmbRoomType.SelectedIndexChanged, dtCheckIn.ValueChanged, dtCheckOut.ValueChanged
         If cmbRoomType.SelectedIndex = -1 Then Return
 
-        Dim dt As DataTable = GetData("SELECT price FROM rooms WHERE room_type='" & cmbRoomType.Text & "' LIMIT 1")
+        Dim roomType As String = cmbRoomType.SelectedValue.ToString()
+
+        Dim dt As DataTable = GetData("SELECT price FROM rooms WHERE room_type='" & roomType & "' LIMIT 1")
         If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
             Dim price As Decimal = Convert.ToDecimal(dt.Rows(0)("price"))
             Dim days As Integer = DateDiff(DateInterval.Day, dtCheckIn.Value, dtCheckOut.Value)
             If days < 1 Then days = 1
-            lblTotal.Text = "Est. Total: " & (price * days).ToString("C")
+            lblTotal.Text = "Est. Total: ₱" & (price * days).ToString("N2")
         End If
     End Sub
 
