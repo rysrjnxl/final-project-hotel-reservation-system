@@ -42,20 +42,16 @@
         End If
     End Sub
 
-    ' --- 1. FILL FORM WHEN CLICKING A ROW ---
     Private Sub dgvReservation_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvReservation.CellClick
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow = dgvReservation.Rows(e.RowIndex)
 
-            ' Store IDs for the update logic
             selectedResId = row.Cells("id").Value.ToString()
             selectedRoomId = row.Cells("room_id").Value.ToString()
 
-            ' Set Dropdowns
             cmbGuest.SelectedValue = row.Cells("guest_id").Value
             cmbRoom.SelectedValue = row.Cells("room_id").Value
 
-            ' Set Dates (Safely)
             Try
                 dtCheckIn.Value = Convert.ToDateTime(row.Cells("check_in").Value)
                 dtCheckOut.Value = Convert.ToDateTime(row.Cells("check_out").Value)
@@ -95,7 +91,7 @@
                 End If
             End If
 
-            MsgBox("Reservation Updated! New Total: ₱" & total.ToString("N2"))
+            MsgBox("Reservation Updated! New Total: ₱" & total.ToString("C"))
             LoadReservations()
             selectedResId = ""
         Catch ex As Exception
@@ -121,7 +117,7 @@
                 ExecuteQuery("UPDATE rooms SET status='Occupied' WHERE id=" & roomId)
             End If
 
-            MsgBox("Reservation Added! Total: ₱" & total.ToString("N2"))
+            MsgBox("Reservation Added! Total: ₱" & total.ToString("C"))
             LoadReservations()
             LoadCombos()
         Catch ex As Exception

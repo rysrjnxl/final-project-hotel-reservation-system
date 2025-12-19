@@ -4,6 +4,11 @@
         ApplyTheme(Me)
         txtPassword.PasswordChar = "*"
     End Sub
+    Private Sub txtPhone_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPhone.KeyPress
+        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
 
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
         If txtUsername.Text = "" Or txtName.Text = "" Or txtEmail.Text = "" Or txtPhone.Text = "" Or txtPassword.Text = "" Then

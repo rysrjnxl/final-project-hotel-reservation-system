@@ -51,6 +51,7 @@
     End Sub
 
     Private Sub btnBookNow_Click(sender As Object, e As EventArgs) Handles btnBookNow.Click
+        ' 1. Validation
         If cmbRoomType.SelectedIndex = -1 Then
             MsgBox("Please select a Room Type.", MsgBoxStyle.Exclamation)
             Exit Sub
@@ -60,6 +61,17 @@
         Dim checkIn As String = dtCheckIn.Value.ToString("yyyy-MM-dd")
         Dim checkOut As String = dtCheckOut.Value.ToString("yyyy-MM-dd")
 
+        ' 2. PREVENT SAME GUEST DOUBLE BOOKING (Checks if reservation exists)
+        Dim sqlMyBookings As String = "SELECT id FROM reservations " &
+                                      "WHERE guest_id=" & CurrentGuestID & " " &
+                                      "AND check_in < '" & checkOut & "' AND check_out > '" & checkIn & "'"
+        Dim dtMyBookings As DataTable = GetData(sqlMyBookings)
+        If dtMyBookings IsNot Nothing AndAlso dtMyBookings.Rows.Count > 0 Then
+            MsgBox("You already have a reservation during these dates!", MsgBoxStyle.Exclamation, "Duplicate Booking")
+            Exit Sub
+        End If
+
+        ' 3. FIND AVAILABLE ROOM
         Dim sqlAvailability As String = "SELECT id, price FROM rooms " &
                                         "WHERE room_type='" & roomType & "' " &
                                         "AND id NOT IN (" &
@@ -72,11 +84,13 @@
         If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
             Dim roomId As Integer = Convert.ToInt32(dt.Rows(0)("id"))
             Dim price As Decimal = Convert.ToDecimal(dt.Rows(0)("price"))
+
             Dim days As Integer = DateDiff(DateInterval.Day, dtCheckIn.Value, dtCheckOut.Value)
             If days < 1 Then days = 1
             Dim total As Decimal = price * days
 
             Try
+                ' 4. INSERT RESERVATION
                 Dim sqlBook As String = "INSERT INTO reservations(guest_id, room_id, check_in, check_out, total_amount) " &
                                         "VALUES(" & CurrentGuestID & ", " & roomId & ", '" & checkIn & "', '" & checkOut & "', " & total & ")"
                 ExecuteQuery(sqlBook)
@@ -87,7 +101,9 @@
 
                 MsgBox("Booking Successful! Total Cost: " & total.ToString("C"), MsgBoxStyle.Information)
 
-                CurrentGuestID = 0
+                cmbRoomType.SelectedIndex = -1
+                lblTotal.Text = "Est. Total: ₱0.00"
+
             Catch ex As Exception
                 MsgBox("Booking Error: " & ex.Message)
             End Try
@@ -104,7 +120,7 @@
             Dim price As Decimal = Convert.ToDecimal(dt.Rows(0)("price"))
             Dim days As Integer = DateDiff(DateInterval.Day, dtCheckIn.Value, dtCheckOut.Value)
             If days < 1 Then days = 1
-            lblTotal.Text = "Est. Total: " & (price * days).ToString("N2")
+            lblTotal.Text = "Est. Total: " & (price * days).ToString("C")
         End If
     End Sub
 
