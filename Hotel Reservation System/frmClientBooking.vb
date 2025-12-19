@@ -88,10 +88,6 @@
                 MsgBox("Booking Successful! Total Cost: " & total.ToString("C"), MsgBoxStyle.Information)
 
                 CurrentGuestID = 0
-                Dim login As New LoginForm
-                login.Show()
-                Me.Close()
-
             Catch ex As Exception
                 MsgBox("Booking Error: " & ex.Message)
             End Try
